@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Believe. Achieve. Excel. | UPASHIKSHA ACADEMY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    :root{--bg:#020617;--bg-elevated:rgba(15,23,42,0.9);--card-bg:rgba(30,41,59,0.8);--text:#e5e7eb;--text-light:#f8fafc;--muted:#9ca3af;--accent:#38bdf8;--accent-2:#6366f1;--accent-3:#10b981;--accent-4:#f59e0b;--border-subtle:rgba(148,163,184,0.4);--shadow-soft:0 24px 60px rgba(0,0,0,0.5);--radius-lg:18px;--nav-blur:blur(12px);--header-bg:rgba(2,6,23,0.95);--toggle-bg:#fff;--toggle-icon-color:#f59e0b;--expertise-card-bg:rgba(30,41,59,0.9);--expertise-border:rgba(56,189,248,0.3);--form-bg:#0f172a;--form-card-bg:#1e293b;--form-border:#334155;--form-text:#f1f5f9;--form-text-bold:#ffffff;--form-label:#cbd5e1;--form-input-bg:#0f172a;--form-focus:#38bdf8}
+    html[data-theme="light"]{--bg:#f8fafc;--bg-elevated:rgba(255,255,255,0.95);--card-bg:linear-gradient(135deg,#1e3a5f,#2d4a6f);--text:#020617;--text-light:#f8fafc;--muted:#64748b;--accent:#2563eb;--accent-2:#7c3aed;--accent-3:#059669;--accent-4:#d97706;--border-subtle:rgba(148,163,184,0.5);--shadow-soft:0 24px 60px rgba(15,23,42,0.15);--header-bg:rgba(248,250,252,0.95);--toggle-bg:#020617;--toggle-icon-color:#fff;--expertise-card-bg:rgba(255,255,255,0.95);--expertise-border:rgba(37,99,235,0.3);--form-bg:#ffffff;--form-card-bg:#f8fafc;--form-border:#e2e8f0;--form-text:#1e293b;--form-text-bold:#0f172a;--form-label:#475569;--form-input-bg:#ffffff;--form-focus:#2563eb}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:1120px;margin:0 auto;padding:0 1.25rem}
+    
+    /* Header */
+    .site-header{position:fixed;inset-inline:0;top:0;z-index:100;backdrop-filter:var(--nav-blur);background:var(--header-bg);border-bottom:1px solid var(--border-subtle)}
+    .nav-bar{display:flex;align-items:center;justify-content:space-between;height:72px;gap:1rem}
+    .logo{display:inline-flex;align-items:center;gap:.75rem;padding:.4rem .75rem .4rem .5rem;border-radius:16px;background:var(--bg);border:1px solid var(--border-subtle);transition:transform .18s,box-shadow .18s,border-color .18s}
+    .logo:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 35px rgba(0,0,0,0.4);border-color:var(--accent)}
+    .logo-image{width:42px;height:42px;border-radius:10px;object-fit:contain}
+    .logo-text-container{display:flex;flex-direction:column;line-height:1.1}
+    .logo-text{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.1rem;color:var(--text)}
+    .logo-text-highlight{font-family:'Fredoka',sans-serif;font-weight:700;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-links{display:flex;align-items:center;gap:1.5rem;font-size:.94rem}
+    .nav-link{position:relative;padding:.2rem 0;color:var(--text);transition:color .18s}
+    .nav-link::after{content:"";position:absolute;left:0;bottom:-.3rem;width:0;height:2px;border-radius:999px;background:var(--accent);transition:width .25s}
+    .nav-link:hover{color:var(--accent)}
+    .nav-link:hover::after{width:100%}
+    .nav-actions{display:flex;align-items:center;gap:.6rem}
+    .btn-header{padding:.5rem 1.1rem;border-radius:999px;font-size:.85rem;font-weight:600;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 24px rgba(56,189,248,0.3);transition:transform .16s,box-shadow .16s;cursor:pointer;border:none}
+    .btn-header:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(56,189,248,0.4)}
+    .theme-toggle{width:40px;height:40px;border-radius:999px;border:1px solid var(--border-subtle);background:var(--toggle-bg);color:var(--toggle-icon-color);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:transform .16s,box-shadow .18s}
+    .theme-toggle:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 8px 25px rgba(0,0,0,0.4)}
+    .theme-icon{display:none;line-height:1}
+    html[data-theme="dark"] .theme-icon-sun{display:block}
+    html[data-theme="light"] .theme-icon-moon{display:block}
+    .nav-toggle{width:40px;height:40px;border-radius:999px;border:1px solid var(--border-subtle);background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}
+    .nav-toggle .bar{width:18px;height:2px;border-radius:999px;background:var(--text);transition:transform .2s,opacity .18s}
+    .nav-toggle.is-open .bar:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .nav-toggle.is-open .bar:nth-child(2){opacity:0}
+    .nav-toggle.is-open .bar:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+    @media(max-width:768px){
+      .nav-links{position:absolute;left:1rem;right:1rem;top:80px;max-width:calc(100vw - 2rem);background:var(--bg-elevated);backdrop-filter:blur(20px);border-radius:16px;border:1px solid var(--border-subtle);box-shadow:0 20px 50px rgba(0,0,0,0.5);flex-direction:column;align-items:flex-start;padding:1rem;transform:scaleY(0.9);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+      body.nav-open .nav-links{opacity:1;transform:scaleY(1);pointer-events:auto}
+      .nav-link{padding:.5rem 0;width:100%}
+      .nav-toggle{display:flex}
+      .logo{padding:.3rem;border-radius:12px}
+    }
+
+    /* Hero */
+    .hero-section{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:72px;overflow:hidden;background:var(--bg)}
+    .hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(56,189,248,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,0.03) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite}
+    html[data-theme="light"] .hero-grid-bg{background-image:linear-gradient(rgba(37,99,235,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.05) 1px,transparent 1px)}
+    @keyframes gridMove{to{transform:translate(60px,60px)}}
+    .hero-orbs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;animation:floatOrb 8s ease-in-out infinite}
+    .hero-orb-1{width:400px;height:400px;background:radial-gradient(circle,rgba(56,189,248,0.4),transparent 70%);top:10%;left:-10%}
+    .hero-orb-2{width:300px;height:300px;background:radial-gradient(circle,rgba(99,102,241,0.4),transparent 70%);top:50%;right:-5%;animation-delay:-2s}
+    .hero-orb-3{width:250px;height:250px;background:radial-gradient(circle,rgba(16,185,129,0.3),transparent 70%);bottom:10%;left:30%;animation-delay:-4s}
+    html[data-theme="light"] .hero-orb-1{background:radial-gradient(circle,rgba(37,99,235,0.3),transparent 70%)}
+    html[data-theme="light"] .hero-orb-2{background:radial-gradient(circle,rgba(124,58,237,0.3),transparent 70%)}
+    html[data-theme="light"] .hero-orb-3{background:radial-gradient(circle,rgba(5,150,105,0.25),transparent 70%)}
+    @keyframes floatOrb{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-30px) scale(1.1)}50%{transform:translate(-20px,20px) scale(0.95)}75%{transform:translate(40px,10px) scale(1.05)}}
+    .hero-content{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:3rem;padding:4rem 0;position:relative;z-index:2}
+    @media(max-width:900px){.hero-content{grid-template-columns:1fr;text-align:center}.hero-text{display:flex;flex-direction:column;align-items:center}.hero-subtitle{margin-inline:auto}.hero-actions{justify-content:center}}
+    .hero-eyebrow{display:inline-block;font-family:'Fredoka',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;padding:.4rem 1rem;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);border-radius:999px}
+    .hero-title{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;line-height:1.1;margin-bottom:1rem;color:var(--text)}
+    .hero-title .gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent-2),var(--accent-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-subtitle{font-size:1.1rem;color:var(--muted);max-width:500px;margin-bottom:2rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:1rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.8rem;border-radius:999px;font-size:.95rem;font-weight:600;cursor:pointer;transition:transform .16s,box-shadow .16s;border:none}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 12px 35px rgba(56,189,248,0.35)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 45px rgba(56,189,248,0.45)}
+    html[data-theme="light"] .btn-secondary{background:#1e40af;color:#fff;border:none}
+    html[data-theme="light"] .btn-secondary:hover{background:#1d4ed8}
+    html[data-theme="dark"] .btn-secondary{background:#fff;color:#2563eb;border:none}
+    html[data-theme="dark"] .btn-secondary:hover{color:#1d4ed8}
+
+   /* Brand Showcase - LOGO ONLY */
+.hero-visual{display:flex;justify-content:center;align-items:center;perspective:1000px}
+.brand-showcase{position:relative;width:clamp(360px,42vw,500px);height:clamp(360px,42vw,500px)}
+.brand-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:55%;height:55%;display:flex;align-items:center;justify-content:center;z-index:10}
+.brand-logo-wrapper{position:relative;display:flex;align-items:center;justify-content:center}
+.brand-logo-glow{position:absolute;width:180px;height:180px;border-radius:32px;background:linear-gradient(135deg,var(--accent),var(--accent-2),var(--accent-3));opacity:.5;filter:blur(35px);animation:glowPulse 3s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.7;transform:scale(1.1)}}
+.brand-logo-container{position:relative;padding:1.5rem;border-radius:32px;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.25);box-shadow:0 25px 50px rgba(0,0,0,0.3),inset 0 1px 1px rgba(255,255,255,0.2);animation:floatCard 6s ease-in-out infinite;overflow:hidden}
+html[data-theme="light"] .brand-logo-container{background:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.9);box-shadow:0 25px 50px rgba(0,0,0,0.15)}
+@keyframes floatCard{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-12px) rotate(1deg)}50%{transform:translateY(-6px) rotate(-1deg)}75%{transform:translateY(-16px) rotate(0.5deg)}}
+.brand-logo-container::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(56,189,248,0.15),transparent,rgba(99,102,241,0.15),transparent,rgba(16,185,129,0.15),transparent);animation:rotateConic 8s linear infinite}
+@keyframes rotateConic{to{transform:rotate(360deg)}}
+.brand-logo-container::after{content:"";position:absolute;inset:2px;border-radius:30px;background:rgba(15,23,42,0.9);z-index:0}
+html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,255,0.95)}
+.brand-logo-image{position:relative;z-index:1;width:250px;height:250px;border-radius:24px;object-fit:contain;filter:drop-shadow(0 10px 30px rgba(56,189,248,0.4));animation:logoPulse 3s ease-in-out infinite}
+@keyframes logoPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 10px 30px rgba(56,189,248,0.4))}50%{transform:scale(1.05);filter:drop-shadow(0 15px 40px rgba(56,189,248,0.6))}}
+.orbit-ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid transparent;transform-style:preserve-3d}
+.orbit-ring-1{width:100%;height:100%;transform:translate(-50%,-50%) rotateX(75deg);border-color:rgba(56,189,248,0.4);animation:orbitSpin 8s linear infinite}
+.orbit-ring-2{width:82%;height:82%;transform:translate(-50%,-50%) rotateX(75deg) rotateZ(60deg);border-color:rgba(99,102,241,0.4);animation:orbitSpin 12s linear infinite reverse}
+.orbit-ring-3{width:118%;height:118%;transform:translate(-50%,-50%) rotateX(75deg) rotateZ(-30deg);border-color:rgba(16,185,129,0.3);animation:orbitSpin 15s linear infinite}
+@keyframes orbitSpin{to{transform:translate(-50%,-50%) rotateX(75deg) rotateZ(360deg)}}
+.orbit-particle{position:absolute;border-radius:50%;top:50%;left:50%}
+.orbit-particle-1{width:10px;height:10px;background:var(--accent);box-shadow:0 0 20px var(--accent),0 0 40px var(--accent);animation:orbitP1 8s linear infinite}
+.orbit-particle-2{width:8px;height:8px;background:var(--accent-2);box-shadow:0 0 15px var(--accent-2),0 0 30px var(--accent-2);animation:orbitP2 12s linear infinite}
+.orbit-particle-3{width:6px;height:6px;background:var(--accent-3);box-shadow:0 0 15px var(--accent-3),0 0 25px var(--accent-3);animation:orbitP3 15s linear infinite}
+.orbit-particle-4{width:5px;height:5px;background:var(--accent-4);box-shadow:0 0 12px var(--accent-4);animation:orbitP4 10s linear infinite}
+@keyframes orbitP1{to{transform:rotate(360deg) translateX(170px) rotate(-360deg)}}
+@keyframes orbitP2{0%{transform:rotate(90deg) translateX(140px) rotate(-90deg)}100%{transform:rotate(450deg) translateX(140px) rotate(-450deg)}}
+@keyframes orbitP3{0%{transform:rotate(180deg) translateX(200px) rotate(-180deg)}100%{transform:rotate(540deg) translateX(200px) rotate(-540deg)}}
+@keyframes orbitP4{0%{transform:rotate(270deg) translateX(155px) rotate(-270deg)}100%{transform:rotate(630deg) translateX(155px) rotate(-630deg)}}
+.corner-deco{position:absolute;width:30px;height:30px;opacity:.6}
+.corner-deco-tl{top:0;left:0;border-top:2px solid var(--accent);border-left:2px solid var(--accent)}
+.corner-deco-tr{top:0;right:0;border-top:2px solid var(--accent-2);border-right:2px solid var(--accent-2)}
+.corner-deco-bl{bottom:0;left:0;border-bottom:2px solid var(--accent-3);border-left:2px solid var(--accent-3)}
+.corner-deco-br{bottom:0;right:0;border-bottom:2px solid var(--accent-4);border-right:2px solid var(--accent-4)}
+.float-dot{position:absolute;border-radius:50%;opacity:.6}
+.float-dot-1{width:4px;height:4px;background:var(--accent);top:15%;left:20%;animation:floatDot 4s ease-in-out infinite}
+.float-dot-2{width:3px;height:3px;background:var(--accent-2);top:25%;right:15%;animation:floatDot 5s ease-in-out infinite .5s}
+.float-dot-3{width:5px;height:5px;background:var(--accent-3);bottom:20%;left:15%;animation:floatDot 4.5s ease-in-out infinite 1s}
+.float-dot-4{width:3px;height:3px;background:var(--accent-4);bottom:15%;right:20%;animation:floatDot 5.5s ease-in-out infinite 1.5s}
+@keyframes floatDot{0%,100%{transform:translateY(0) scale(1);opacity:.6}50%{transform:translateY(-15px) scale(1.5);opacity:1}}
+.scroll-indicator{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:bounce 2s infinite;z-index:10}
+.scroll-line{width:2px;height:40px;border-radius:999px;background:var(--border-subtle);position:relative;overflow:hidden}
+.scroll-dot{position:absolute;width:100%;height:10px;border-radius:999px;background:var(--accent);animation:scrollMove 1.5s infinite}
+@keyframes scrollMove{0%{top:-10px;opacity:0}30%{opacity:1}100%{top:40px;opacity:0}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+    /* Motto Panels */
+    .motto-panel{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;border-top:1px solid var(--border-subtle)}
+    .motto-panel--believe{background:radial-gradient(ellipse at 0% 0%,rgba(37,99,235,0.2),transparent 50%),radial-gradient(ellipse at 100% 100%,rgba(56,189,248,0.15),transparent 50%),var(--bg)}
+    .motto-panel--achieve{background:radial-gradient(ellipse at 100% 0%,rgba(245,158,11,0.2),transparent 50%),radial-gradient(ellipse at 0% 100%,rgba(99,102,241,0.15),transparent 50%),var(--bg)}
+    .motto-panel--excel{background:radial-gradient(ellipse at 50% 0%,rgba(16,185,129,0.2),transparent 50%),radial-gradient(ellipse at 50% 100%,rgba(139,92,246,0.15),transparent 50%),var(--bg)}
+    .motto-panel-inner{width:100%;max-width:1120px;margin:0 auto;padding:4rem 1.25rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    @media(max-width:900px){.motto-panel-inner{grid-template-columns:1fr;text-align:center;gap:3rem}.motto-big-word{display:flex;justify-content:center}.motto-content{display:flex;flex-direction:column;align-items:center}.motto-features{text-align:left;display:inline-block}}
+    .motto-word-text{font-size:clamp(4rem,15vw,10rem);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;line-height:.9;position:relative;display:inline-block;opacity:0;transform:translateY(60px) scale(0.9);transition:opacity .8s cubic-bezier(0.16,1,0.3,1),transform .8s cubic-bezier(0.16,1,0.3,1)}
+    .motto-panel.is-visible .motto-word-text{opacity:1;transform:translateY(0) scale(1)}
+    .motto-panel--believe .motto-word-text{color:#3b82f6}
+    .motto-panel--achieve .motto-word-text{color:#f59e0b}
+    .motto-panel--excel .motto-word-text{color:#10b981}
+    .motto-word-text::before{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(120deg,transparent 0%,transparent 30%,rgba(255,255,255,0.8) 50%,transparent 70%,transparent 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0}
+    .motto-panel.is-visible .motto-word-text::before{animation:shimmerSweep 1.5s ease-out .3s forwards}
+    @keyframes shimmerSweep{0%{opacity:1;background-position:200% center}60%{opacity:1;background-position:-200% center}100%{opacity:0;background-position:-200% center}}
+    .motto-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+    .motto-particle{position:absolute;width:6px;height:6px;border-radius:50%;opacity:0}
+    .motto-panel--believe .motto-particle{background:#3b82f6;box-shadow:0 0 10px #3b82f6}
+    .motto-panel--achieve .motto-particle{background:#f59e0b;box-shadow:0 0 10px #f59e0b}
+    .motto-panel--excel .motto-particle{background:#10b981;box-shadow:0 0 10px #10b981}
+    .motto-panel.is-visible .motto-particle{opacity:.7;animation:floatP 4s infinite ease-in-out}
+    .motto-particle:nth-child(1){left:10%;top:20%}.motto-particle:nth-child(2){left:80%;top:30%;animation-delay:.5s}.motto-particle:nth-child(3){left:20%;top:70%;animation-delay:1s}.motto-particle:nth-child(4){left:70%;top:80%;animation-delay:1.5s}.motto-particle:nth-child(5){left:50%;top:10%;animation-delay:2s}.motto-particle:nth-child(6){left:30%;top:40%;animation-delay:.3s}
+    @keyframes floatP{0%,100%{transform:translateY(0) scale(1);opacity:.7}50%{transform:translateY(-25px) scale(1.3);opacity:1}}
+    .motto-content{opacity:0;transform:translateX(40px);transition:opacity .7s ease .4s,transform .7s ease .4s}
+    .motto-panel.is-visible .motto-content{opacity:1;transform:translateX(0)}
+    @media(max-width:900px){.motto-content{transform:translateY(40px)}}
+    .motto-step{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;padding:.3rem .8rem;border-radius:999px}
+    .motto-panel--believe .motto-step{color:#3b82f6;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3)}
+    .motto-panel--achieve .motto-step{color:#f59e0b;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3)}
+    .motto-panel--excel .motto-step{color:#10b981;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3)}
+    .motto-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-bottom:1rem;color:var(--text)}
+    .motto-desc{font-size:1rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.7;max-width:500px}
+    .motto-features{list-style:none}
+    .motto-features li{position:relative;padding-left:1.5rem;margin-bottom:.6rem;font-size:.95rem;color:var(--text)}
+    .motto-features li::before{content:"";position:absolute;left:0;top:.5rem;width:8px;height:8px;border-radius:50%}
+    .motto-panel--believe .motto-features li::before{background:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,0.5)}
+    .motto-panel--achieve .motto-features li::before{background:#f59e0b;box-shadow:0 0 8px rgba(245,158,11,0.5)}
+    .motto-panel--excel .motto-features li::before{background:#10b981;box-shadow:0 0 8px rgba(16,185,129,0.5)}
+    .motto-quote-card{margin-top:2rem;padding:1.25rem 1.5rem;border-radius:var(--radius-lg);border:1px solid var(--border-subtle);box-shadow:var(--shadow-soft);max-width:500px}
+    @media(max-width:900px){.motto-quote-card{text-align:center}}
+    html[data-theme="dark"] .motto-quote-card{background:rgba(30,41,59,0.8)}
+    html[data-theme="light"] .motto-panel--believe .motto-quote-card{background:linear-gradient(135deg,#1e40af,#3b82f6);border-color:transparent}
+    html[data-theme="light"] .motto-panel--achieve .motto-quote-card{background:linear-gradient(135deg,#b45309,#f59e0b);border-color:transparent}
+    html[data-theme="light"] .motto-panel--excel .motto-quote-card{background:linear-gradient(135deg,#047857,#10b981);border-color:transparent}
+    .motto-quote{font-size:.95rem;font-style:italic;color:var(--muted);margin-bottom:.5rem}
+    html[data-theme="light"] .motto-quote-card .motto-quote{color:rgba(255,255,255,0.95)}
+    .motto-quote-attr{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+    html[data-theme="dark"] .motto-panel--believe .motto-quote-attr{color:#3b82f6}
+    html[data-theme="dark"] .motto-panel--achieve .motto-quote-attr{color:#f59e0b}
+    html[data-theme="dark"] .motto-panel--excel .motto-quote-attr{color:#10b981}
+    html[data-theme="light"] .motto-quote-card .motto-quote-attr{color:rgba(255,255,255,0.85)}
+
+    /* Sections */
+    .content-section{padding:5rem 0;background:var(--bg);border-top:1px solid var(--border-subtle)}
+    .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:start;text-align:center}
+    @media(max-width:900px){.about-grid{grid-template-columns:1fr;text-align:center}.about-grid>div:first-child{display:flex;flex-direction:column;align-items:center}.section-desc{max-width:600px}}
+    .section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:1rem;color:var(--text)}
+    .section-desc{font-size:1rem;color:var(--muted);margin-bottom:1rem;line-height:1.7}
+.about-card{position:relative;border-radius:var(--radius-lg);padding:1.5rem;box-shadow:var(--shadow-soft);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden;min-height:320px;text-align:center}
+    .about-card::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border-radius:var(--radius-lg);padding:2px;background:linear-gradient(135deg,var(--accent),var(--accent-2),var(--accent-3));mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask-composite:xor;opacity:0;transition:opacity .3s ease}
+    .about-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,0.15)}
+    .about-card:hover::before{opacity:1}
+    @media(max-width:900px){.about-card{text-align:left}.about-card h3{text-align:center}}
+    html[data-theme="dark"] .about-card{background:rgba(30,41,59,0.8);border:1px solid var(--border-subtle)}
+    html[data-theme="light"] .about-card{background:linear-gradient(135deg,#1e3a5f,#2563eb);border-color:transparent}
+/* Uniform solid blue backgrounds for all cards */
+html[data-theme="light"] .about-card{background:#2563eb}
+html[data-theme="dark"] .about-card{background:#1e3a5f}
+/* Text colors for solid backgrounds */
+.about-card h3{color:#fff;font-weight:700}
+.about-card p{color:rgba(255,255,255,0.9);font-weight:600}
+.about-card .tagline{color:#fff;font-weight:700;text-align:center}
+    /* Animation for card entrance */
+    .about-card{animation:cardSlideIn .6s ease-out backwards}
+    .about-card:nth-child(1){animation-delay:.1s}
+    .about-card:nth-child(2){animation-delay:.2s}
+    .about-card:nth-child(3){animation-delay:.3s}
+    .about-card:nth-child(4){animation-delay:.4s}
+    @keyframes cardSlideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .about-card h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--text)}
+    html[data-theme="light"] .about-card h3{color:#fff}
+    .about-card ul{list-style:none}
+    .about-card li{position:relative;padding-left:1.2rem;margin-bottom:.5rem;font-size:.95rem;color:var(--muted)}
+    html[data-theme="light"] .about-card li{color:rgba(255,255,255,0.9)}
+    .about-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+    html[data-theme="light"] .about-card li::before{color:#38bdf8}
+
+    /* Responsive adjustments for about section */
+    @media(max-width:768px){
+      .about-grid{grid-template-columns:1fr;gap:2rem}
+      .about-card{padding:1rem;border-radius:16px}
+      .about-card h3{font-size:1rem;margin-bottom:0.75rem}
+      .about-card p{font-size:0.9rem;margin-bottom:1rem}
+      .about-card ul{margin-bottom:0}
+      .about-card li{font-size:0.85rem;padding-left:1rem;margin-bottom:0.4rem}
+      .about-card li::before{font-size:0.8rem}
+      .tagline{font-size:0.85rem}
+    }
+    @media(max-width:480px){
+      .about-section{padding:4rem 0}
+      .about-grid{grid-template-columns:1fr;gap:1.5rem}
+      .about-card{padding:0.875rem;border-radius:12px}
+      .about-card h3{font-size:0.95rem;margin-bottom:0.5rem}
+      .about-card p{font-size:0.85rem;margin-bottom:0.75rem}
+      .about-card li{font-size:0.8rem;padding-left:0.875rem;margin-bottom:0.3rem}
+      .tagline{font-size:0.8rem}
+    }
+
+    /* Expertise */
+    .expertise-section{padding:6rem 0;position:relative;overflow:hidden;border-top:1px solid var(--border-subtle)}
+    html[data-theme="dark"] .expertise-section{background:radial-gradient(ellipse at 0% 50%,rgba(56,189,248,0.08),transparent 50%),radial-gradient(ellipse at 100% 50%,rgba(139,92,246,0.08),transparent 50%),var(--bg)}
+    html[data-theme="light"] .expertise-section{background:radial-gradient(ellipse at 0% 50%,rgba(37,99,235,0.08),transparent 50%),radial-gradient(ellipse at 100% 50%,rgba(124,58,237,0.08),transparent 50%),var(--bg)}
+    .expertise-header{text-align:center;margin-bottom:4rem}
+    .expertise-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem 1.25rem;border-radius:999px;margin-bottom:1.25rem;background:linear-gradient(135deg,rgba(56,189,248,0.15),rgba(99,102,241,0.15));border:1px solid rgba(56,189,248,0.3);color:var(--accent)}
+    .expertise-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:1rem;color:var(--text)}
+    .expertise-title .highlight{background:linear-gradient(135deg,var(--accent),var(--accent-2),var(--accent-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .expertise-subtitle{font-size:1.1rem;color:var(--muted);max-width:600px;margin:0 auto}
+    .expertise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+    @media(max-width:900px){.expertise-grid{grid-template-columns:1fr}}
+    .expertise-card{position:relative;padding:2rem;border-radius:24px;background:var(--expertise-card-bg);border:1px solid var(--expertise-border);overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+    .expertise-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(0,0,0,0.3)}
+    html[data-theme="dark"] .expertise-card:hover{border-color:var(--accent);box-shadow:0 25px 60px rgba(56,189,248,0.15)}
+    html[data-theme="light"] .expertise-card:hover{border-color:var(--accent);box-shadow:0 25px 60px rgba(37,99,235,0.2)}
+    .expertise-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;border-radius:24px 24px 0 0;opacity:0;transition:opacity .3s}
+    .expertise-card:hover::before{opacity:1}
+    .expertise-card--foundation::before{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+    .expertise-card--board::before{background:linear-gradient(90deg,#8b5cf6,#a78bfa)}
+    .expertise-card--puc::before{background:linear-gradient(90deg,#10b981,#34d399)}
+    .expertise-card--home::before{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+    .expertise-card-icon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
+    .expertise-card--foundation .expertise-card-icon{background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 10px 30px rgba(59,130,246,0.3)}
+    .expertise-card--board .expertise-card-icon{background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 10px 30px rgba(139,92,246,0.3)}
+    .expertise-card--puc .expertise-card-icon{background:linear-gradient(135deg,#10b981,#047857);box-shadow:0 10px 30px rgba(16,185,129,0.3)}
+    .expertise-card--home .expertise-card-icon{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 10px 30px rgba(245,158,11,0.3)}
+    .expertise-card-icon::after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.3) 50%,transparent 60%);animation:iconShine 3s infinite}
+    @keyframes iconShine{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
+    .expertise-card-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .75rem;border-radius:999px;margin-bottom:.75rem}
+    .expertise-card--foundation .expertise-card-label{background:rgba(59,130,246,0.15);color:#3b82f6;border:1px solid rgba(59,130,246,0.3)}
+    .expertise-card--board .expertise-card-label{background:rgba(139,92,246,0.15);color:#8b5cf6;border:1px solid rgba(139,92,246,0.3)}
+    .expertise-card--puc .expertise-card-label{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+    .expertise-card--home .expertise-card-label{background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3)}
+    .expertise-card-title{font-size:1.35rem;font-weight:700;margin-bottom:.5rem;color:var(--text)}
+    .expertise-card-subtitle{font-size:.9rem;color:var(--muted);margin-bottom:1rem;line-height:1.6}
+    .expertise-card-subjects{display:flex;flex-wrap:wrap;gap:.5rem}
+    .subject-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:600;padding:.4rem .75rem;border-radius:999px;background:rgba(148,163,184,0.1);border:1px solid var(--border-subtle);color:var(--text);transition:all .2s}
+    .subject-tag:hover{transform:translateY(-2px)}
+
+    /* Mobile adjustments for expertise section */
+    @media(max-width:768px){
+      .expertise-card{text-align:center}
+      .expertise-card-icon{margin:0 auto 1.25rem}
+      .expertise-card-subjects{justify-content:center}
+    }
+
+    /* Schedule */
+    .schedule-section{padding:6rem 0;position:relative;overflow:hidden;border-top:1px solid var(--border-subtle)}
+    html[data-theme="dark"] .schedule-section{background:radial-gradient(ellipse at 50% 0%,rgba(245,158,11,0.1),transparent 50%),radial-gradient(ellipse at 50% 100%,rgba(16,185,129,0.08),transparent 50%),var(--bg)}
+    html[data-theme="light"] .schedule-section{background:radial-gradient(ellipse at 50% 0%,rgba(217,119,6,0.08),transparent 50%),radial-gradient(ellipse at 50% 100%,rgba(5,150,105,0.06),transparent 50%),var(--bg)}
+    .schedule-header{text-align:center;margin-bottom:4rem}
+    .schedule-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem 1.25rem;border-radius:999px;margin-bottom:1.25rem;background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(16,185,129,0.15));border:1px solid rgba(245,158,11,0.3);color:var(--accent-4)}
+    .schedule-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:1rem;color:var(--text)}
+    .schedule-title .highlight{background:linear-gradient(135deg,var(--accent-4),#ef4444,var(--accent-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .schedule-subtitle{font-size:1.1rem;color:var(--muted);max-width:650px;margin:0 auto}
+    .schedule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
+    @media(max-width:900px){.schedule-grid{grid-template-columns:1fr}}
+    .schedule-card{position:relative;padding:2rem;border-radius:24px;text-align:center;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    html[data-theme="dark"] .schedule-card{background:rgba(30,41,59,0.9);border:1px solid var(--border-subtle)}
+    html[data-theme="light"] .schedule-card{background:rgba(255,255,255,0.95);border:1px solid var(--border-subtle);box-shadow:0 10px 40px rgba(0,0,0,0.08)}
+    .schedule-card:hover{transform:translateY(-8px)}
+    html[data-theme="dark"] .schedule-card:hover{box-shadow:0 25px 60px rgba(0,0,0,0.4)}
+    html[data-theme="light"] .schedule-card:hover{box-shadow:0 25px 60px rgba(0,0,0,0.15)}
+    .schedule-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px}
+    .schedule-card--evening::before{background:linear-gradient(90deg,#f59e0b,#fbbf24,#f59e0b)}
+    .schedule-card--morning::before{background:linear-gradient(90deg,#3b82f6,#60a5fa,#3b82f6)}
+    .schedule-card--home::before{background:linear-gradient(90deg,#10b981,#34d399,#10b981)}
+    .schedule-card-icon{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 1.25rem;position:relative}
+    .schedule-card--evening .schedule-card-icon{background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05));border:2px solid rgba(245,158,11,0.3)}
+    .schedule-card--morning .schedule-card-icon{background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(59,130,246,0.05));border:2px solid rgba(59,130,246,0.3)}
+    .schedule-card--home .schedule-card-icon{background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.05));border:2px solid rgba(16,185,129,0.3)}
+    .schedule-card-icon::after{content:"";position:absolute;inset:-8px;border-radius:50%;opacity:0;animation:pulseRing 2s infinite}
+    .schedule-card--evening .schedule-card-icon::after{border:2px solid rgba(245,158,11,0.4)}
+    .schedule-card--morning .schedule-card-icon::after{border:2px solid rgba(59,130,246,0.4)}
+    .schedule-card--home .schedule-card-icon::after{border:2px solid rgba(16,185,129,0.4)}
+    @keyframes pulseRing{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.3);opacity:0}}
+    .schedule-card-label{font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+    .schedule-card--evening .schedule-card-label{color:#f59e0b}
+    .schedule-card--morning .schedule-card-label{color:#3b82f6}
+    .schedule-card--home .schedule-card-label{color:#10b981}
+    .schedule-card-time{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.5rem}
+    .schedule-card-note{font-size:.85rem;color:var(--muted);line-height:1.5}
+    .weekly-info{max-width:700px;margin:0 auto;padding:2rem 2.5rem;border-radius:24px;text-align:center;position:relative;overflow:hidden}
+    html[data-theme="dark"] .weekly-info{background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(56,189,248,0.1));border:1px solid rgba(139,92,246,0.3)}
+    html[data-theme="light"] .weekly-info{background:linear-gradient(135deg,#6d28d9,#4f46e5,#2563eb);border:none;box-shadow:0 20px 50px rgba(109,40,217,0.3)}
+    .weekly-info::before{content:"";position:absolute;top:-100%;left:-100%;width:300%;height:300%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.1) 50%,transparent 60%);animation:weeklyShine 4s infinite}
+    @keyframes weeklyShine{0%{transform:translateX(-50%) translateY(-50%) rotate(45deg)}100%{transform:translateX(50%) translateY(50%) rotate(45deg)}}
+    .weekly-info-icon{font-size:2.5rem;margin-bottom:1rem;position:relative;z-index:1}
+    .weekly-info-title{font-size:1.25rem;font-weight:700;margin-bottom:1rem;position:relative;z-index:1}
+    html[data-theme="dark"] .weekly-info-title{color:var(--text)}
+    html[data-theme="light"] .weekly-info-title{color:#fff}
+    .weekly-info-content{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;position:relative;z-index:1}
+    .weekly-item{display:flex;align-items:center;gap:.5rem;font-size:.95rem}
+    html[data-theme="dark"] .weekly-item{color:var(--muted)}
+    html[data-theme="light"] .weekly-item{color:rgba(255,255,255,0.9)}
+    html[data-theme="dark"] .weekly-item strong{color:var(--text)}
+    html[data-theme="light"] .weekly-item strong{color:#fff}
+    .cta-banner{margin-top:3rem;padding:2.5rem;border-radius:24px;text-align:center;position:relative;overflow:hidden}
+    html[data-theme="dark"] .cta-banner{background:linear-gradient(135deg,rgba(56,189,248,0.1),rgba(99,102,241,0.1));border:1px solid rgba(56,189,248,0.3)}
+    html[data-theme="light"] .cta-banner{background:linear-gradient(135deg,#1e40af,#6d28d9);border:none;box-shadow:0 20px 50px rgba(30,64,175,0.3)}
+    .cta-banner-title{font-size:1.5rem;font-weight:700;margin-bottom:.75rem}
+    html[data-theme="dark"] .cta-banner-title{color:var(--text)}
+    html[data-theme="light"] .cta-banner-title{color:#fff}
+    .cta-banner-text{font-size:1rem;margin-bottom:1.5rem}
+    html[data-theme="dark"] .cta-banner-text{color:var(--muted)}
+    html[data-theme="light"] .cta-banner-text{color:rgba(255,255,255,0.85)}
+    .cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;border-radius:999px;font-size:1rem;font-weight:700;transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
+    html[data-theme="dark"] .cta-btn{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 12px 35px rgba(56,189,248,0.35)}
+    html[data-theme="light"] .cta-btn{background:#fff;color:#1e40af;box-shadow:0 12px 35px rgba(0,0,0,0.2)}
+    .cta-btn:hover{transform:translateY(-3px)}
+
+    /* Contact */
+    #contact{padding:5rem 0;background:var(--bg);border-top:1px solid var(--border-subtle)}
+    .section-header{text-align:center;margin-bottom:3rem}
+    .contact-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:600px;margin:0 auto}
+    @media(max-width:600px){.contact-cards{grid-template-columns:1fr}}
+    .contact-card{display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;border-radius:16px;border:1px solid var(--border-subtle);transition:transform .2s,box-shadow .2s}
+    @media(max-width:600px){.contact-card{flex-direction:column;text-align:center;padding:1.5rem}.contact-text{align-items:center}}
+    html[data-theme="dark"] .contact-card{background:rgba(30,41,59,0.8)}
+    html[data-theme="light"] .contact-card{background:linear-gradient(135deg,#1e3a5f,#334155);border-color:transparent}
+    .contact-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.35)}
+    .contact-icon{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+    .contact-icon svg{width:22px;height:22px}
+    .contact-text{display:flex;flex-direction:column}
+    .contact-title{font-size:.95rem;font-weight:600;color:var(--text)}
+    html[data-theme="light"] .contact-card .contact-title{color:#fff}
+    .contact-note{font-size:.8rem;color:var(--muted)}
+    html[data-theme="light"] .contact-card .contact-note{color:rgba(255,255,255,0.75)}
+
+    /* Footer */
+    .site-footer{padding:2rem 0;border-top:1px solid var(--border-subtle);background:var(--bg)}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:var(--muted)}
+    @media(max-width:600px){.footer-inner{flex-direction:column;text-align:center}}
+    .footer-links{display:flex;gap:1.5rem}
+    .footer-links a:hover{color:var(--accent)}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+    .reveal-stagger{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+    .reveal-stagger.is-visible{opacity:1;transform:translateY(0)}
+    .reveal-stagger:nth-child(1){transition-delay:.1s}
+    .reveal-stagger:nth-child(2){transition-delay:.2s}
+    .reveal-stagger:nth-child(3){transition-delay:.3s}
+    .reveal-stagger:nth-child(4){transition-delay:.4s}
+
+    /* ========================================
+       REDESIGNED REGISTRATION FORM - CLEAN
+       ======================================== */
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(8px);
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:1rem;
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .3s ease,visibility .3s ease;
+    }
+    .modal-overlay.is-active{opacity:1;visibility:visible}
+    
+    .modal-container{
+      position:relative;
+      width:100%;
+      max-width:680px;
+      max-height:90vh;
+      overflow-y:auto;
+      border-radius:20px;
+      opacity:0;
+      /* Removed transform for better native rendering alignment */
+      transition:opacity .4s ease;
+    }
+    .modal-overlay.is-active .modal-container{opacity:1;}
+    
+    /* Scrollbar styling */
+    .modal-container::-webkit-scrollbar{width:6px}
+    .modal-container::-webkit-scrollbar-track{background:transparent}
+    .modal-container::-webkit-scrollbar-thumb{background:var(--form-border);border-radius:3px}
+    .modal-container::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+    @media(max-width:600px){
+      /* FIX: Ensure the modal takes up appropriate height and allows scrolling */
+      .modal-container{
+        max-width:none;
+        width:calc(100vw - 2rem); 
+        height:95vh;
+        max-height:95vh; 
+        border-radius:20px;
+        overflow-y:auto; 
+      }
+      .registration-form{padding:1.5rem}
+    }
+
+    .registration-form{background:var(--form-card-bg);border:1px solid var(--form-border);padding:2.5rem 2rem;border-radius:20px;position:relative}
+    @media(max-width:600px){.registration-form{padding:2rem 1.25rem}}
+    
+    /* Close button */
+    .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:1px solid var(--form-border);background:var(--form-bg);color:var(--form-text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.3rem;transition:all .25s ease;z-index:10}
+    .modal-close:hover{background:#ef4444;border-color:#ef4444;color:#fff;transform:scale(1.1)}
+    
+    /* Form header */
+    .form-header{text-align:center;margin-bottom:2rem}
+    .form-logo{width:70px;height:70px;border-radius:16px;object-fit:contain;margin-bottom:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);transition:transform .3s ease}
+    .form-logo:hover{transform:scale(1.05)}
+    .form-title{font-family:'Fredoka',sans-serif;font-size:1.5rem;font-weight:700;color:var(--form-text-bold);margin-bottom:.5rem}
+    .form-subtitle{font-size:.95rem;color:var(--muted)}
+    
+    /* Form grid */
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr;gap:1rem}}
+    
+    /* Form groups with stagger animation */
+    .form-group{position:relative;opacity:0;transform:translateY(15px);animation:formFieldIn .4s ease forwards}
+    .form-group:nth-child(1){animation-delay:.05s}
+    .form-group:nth-child(2){animation-delay:.1s}
+    .form-group:nth-child(3){animation-delay:.15s}
+    .form-group:nth-child(4){animation-delay:.2s}
+    .form-group:nth-child(5){animation-delay:.25s}
+    .form-group:nth-child(6){animation-delay:.3s}
+    .form-group:nth-child(7){animation-delay:.35s}
+    .form-group:nth-child(8){animation-delay:.4s}
+    .form-group:nth-child(9){animation-delay:.45s}
+    .form-group:nth-child(10){animation-delay:.5s}
+    .form-group:nth-child(11){animation-delay:.55s}
+    .form-group:nth-child(12){animation-delay:.6s}
+    .form-group:nth-child(13){animation-delay:.65s}
+    @keyframes formFieldIn{to{opacity:1;transform:translateY(0)}}
+    
+    .form-group.full-width{grid-column:1/-1}
+    .form-group.hidden{display:none}
+    
+    /* Labels - darker and bolder */
+    .form-label{display:block;font-size:.8rem;font-weight:700;color:var(--form-text-bold);margin-bottom:.5rem;letter-spacing:.02em;transition:color .25s ease}
+    .form-label .required{color:#ef4444;margin-left:.2rem;font-weight:700}
+    
+    /* Input wrapper for animations */
+    .input-wrapper{position:relative}
+    
+    /* Inputs and selects */
+    .form-input,.form-select{
+      width:100%; 
+      padding:.875rem 1rem;
+      border-radius:12px;
+      font-size:.95rem;
+      font-weight:500;
+      font-family:inherit;
+      color:var(--form-text-bold);
+      background:var(--form-input-bg);
+      border:2px solid var(--form-border);
+      transition:all .3s ease;
+      -webkit-appearance:none;
+      appearance:none;
+      max-width:100%; 
+    }
+    
+    .form-input::placeholder{color:var(--muted);font-weight:400}
+    
+    /* Focus states with smooth animation */
+    /* Removed transform: translateY(-2px) to prevent layout shift issues with dropdowns */
+    .form-input:focus,.form-select:focus{outline:none;border-color:var(--form-focus);box-shadow:0 0 0 4px rgba(56,189,248,0.15);}
+    html[data-theme="light"] .form-input:focus,html[data-theme="light"] .form-select:focus{box-shadow:0 0 0 4px rgba(37,99,235,0.15)}
+    
+    /* Hover states */
+    .form-input:hover:not(:focus),.form-select:hover:not(:focus){border-color:var(--accent);background:var(--form-input-bg)}
+    
+    /* Select styling */
+    .form-select{
+      cursor:pointer;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right 1rem center;
+      background-size:1.1rem;
+      padding-right:2.75rem
+    }
+    
+    /* FIX: Ensure select options are legible in all themes/browsers by setting explicit colors. */
+    .form-select option{
+      background:var(--form-card-bg); 
+      color:var(--form-text-bold);
+      padding:.5rem;
+    }
+    
+    /* Error states */
+    .form-input.error,.form-select.error{border-color:#ef4444;animation:shake .4s ease}
+    @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+    
+    .error-message{font-size:.75rem;font-weight:600;color:#ef4444;margin-top:.4rem;display:none;opacity:0;transform:translateY(-5px);transition:all .25s ease}
+    .error-message.visible{display:block;opacity:1;transform:translateY(0)}
+    
+    /* Filled state indicator */
+    .form-input:not(:placeholder-shown),.form-select:not([value=""]){border-color:var(--accent-3)}
+    .form-input:not(:placeholder-shown):not(:focus),.form-select.filled:not(:focus){border-color:rgba(16,185,129,0.5)}
+    
+    /* Submit container */
+    .form-submit-container{grid-column:1/-1;margin-top:1rem;opacity:0;transform:translateY(15px);animation:formFieldIn .4s ease .7s forwards}
+    
+    /* Submit button */
+    .form-submit{width:100%;padding:1rem 1.5rem;border-radius:12px;font-size:1rem;font-weight:700;font-family:'Fredoka',sans-serif;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;cursor:pointer;position:relative;overflow:hidden;transition:all .3s ease;box-shadow:0 4px 15px rgba(56,189,248,0.3)}
+    
+    .form-submit:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(56,189,248,0.4)}
+    .form-submit:active{transform:translateY(-1px)}
+    
+    /* Submit button shine effect */
+    .form-submit::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);transition:left .5s ease}
+    .form-submit:hover::before{left:100%}
+    
+    .form-submit-text{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:.5rem}
+    .form-submit-icon{font-size:1.1rem;transition:transform .3s ease}
+    .form-submit:hover .form-submit-icon{transform:translateX(5px)}
+    
+    /* Input icons (optional enhancement) */
+    .input-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.1rem;pointer-events:none}
+    .form-input:focus ~ .input-icon,.form-select:focus ~ .input-icon{color:var(--accent)}
+    .form-input.has-icon,.form-select.has-icon{padding-left:2.75rem}
+    
+    /* Label float animation (when focused) */
+    .form-group.focused .form-label{color:var(--accent)}
+    
+    /* Success state */
+    .form-group.success .form-input,.form-group.success .form-select{border-color:var(--accent-3)}
+    .form-group.success .form-label{color:var(--accent-3)}
+    
+    /* Divider */
+    .form-divider{grid-column:1/-1;height:1px;background:var(--form-border);margin:.5rem 0;opacity:0;animation:formFieldIn .4s ease .35s forwards}
+    
+    /* Section titles within form */
+    .form-section-title{grid-column:1/-1;font-size:.85rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-top:.5rem;opacity:0;animation:formFieldIn .4s ease .35s forwards}
+
+/* About section refined styling */
+.about-section {
+  padding: 6rem 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.08), transparent 50%),
+              radial-gradient(ellipse at 0% 100%, rgba(99, 102, 241, 0.06), transparent 50%),
+              var(--bg);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: .5rem 1.25rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(99, 102, 241, 0.15));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--accent);
+}
+
+.about-badge svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent);
+}
+
+.about-desc {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.about-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  overflow: hidden;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+/* Card hover effects */
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent);
+}
+
+/* Uniform solid blue for dark theme */
+    html[data-theme="dark"] .about-card {
+      background: #1e3a5f;
+    }
+
+/* Uniform solid blue for light theme */
+html[data-theme="light"] .about-card {
+  background: #2563eb;
+  border-color: transparent;
+}
+
+.about-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+html[data-theme="dark"] .about-card-icon {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.2));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+html[data-theme="light"] .about-card-icon {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+  position: relative;
+  z-index: 2;
+}
+
+html[data-theme="dark"] .about-card-icon svg {
+  stroke: #FFD700;
+}
+
+html[data-theme="light"] .about-card-icon svg {
+  stroke: #fff;
+}
+
+/* Icon shine effect */
+.about-card-icon::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.3) 50%, transparent 60%);
+  transform: rotate(45deg);
+  animation: iconShine 3s infinite;
+}
+
+@keyframes iconShine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+    .about-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+
+    .about-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .about-card .tagline {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+
+    html[data-theme="dark"] .about-card .tagline {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    html[data-theme="light"] .about-card .tagline {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .about-features {
+      list-style: none;
+      margin-top: auto;
+      margin-bottom: 0;
+    }
+
+    .about-features li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .about-features li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #fff;
+    }
+
+/* Animation refinements */
+.about-card {
+  animation: cardSlideIn .7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  transform-origin: bottom center;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .about-header {
+    margin-bottom: 2rem;
+  }
+  
+  .about-card {
+    padding: 1.75rem;
+    min-height: 340px;
+  }
+  
+  .about-card-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+  
+  .about-card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section {
+    padding: 4rem 0;
+  }
+  
+  .about-card {
+    padding: 1.5rem;
+    min-height: 320px;
+  }
+  
+  .about-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .about-card p {
+    font-size: 0.9rem;
+  }
+  
+  .about-features li {
+    font-size: 0.85rem;
+  }
+  
+  .about-desc {
+    font-size: 0.95rem;
+  }
+}
+
+/* Center alignment for mobile view */
+@media (max-width: 900px) {
+  .about-card {
+    text-align: center;
+  }
+  
+  .about-card-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .about-features {
+    text-align: left;
+  }
+  
+  .about-features li {
+    display: inline-block;
+    text-align: left;
+  }
+}
+  </style>
+</head>
+<body id="home">
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="#home" class="logo">
+        <img src="logo.jpeg" alt="Upashiksha Academy Logo" class="logo-image"/>
+        <div class="logo-text-container">
+          <span class="logo-text">UPASHIKSHA</span>
+          <span class="logo-text-highlight">Academy</span>
+        </div>
+      </a>
+      <nav class="nav-links" id="primary-nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#expertise" class="nav-link">Programs</a>
+        <a href="#schedule" class="nav-link">Schedule</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <span class="theme-icon theme-icon-sun">☀️</span>
+          <span class="theme-icon theme-icon-moon">🌙</span>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-orbs">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+      </div>
+      <div class="container hero-content">
+        <div class="hero-text">
+          <span class="hero-eyebrow reveal">UPASHIKSHA ACADEMY</span>
+          <h1 class="hero-title reveal">Unlock Your <span class="gradient-text">Full Potential</span> With Expert Guidance</h1>
+          <p class="hero-subtitle reveal">Empowering students for Board Exams, NEET, JEE and beyond with concept clarity, exam strategy, and consistent mentoring.</p>
+          <div class="hero-actions reveal">
+            <a href="#about" class="btn btn-secondary">Explore More</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="brand-showcase">
+            <div class="corner-deco corner-deco-tl"></div>
+            <div class="corner-deco corner-deco-tr"></div>
+            <div class="corner-deco corner-deco-bl"></div>
+            <div class="corner-deco corner-deco-br"></div>
+            <div class="float-dot float-dot-1"></div>
+            <div class="float-dot float-dot-2"></div>
+            <div class="float-dot float-dot-3"></div>
+            <div class="float-dot float-dot-4"></div>
+            <div class="orbit-ring orbit-ring-1"></div>
+            <div class="orbit-ring orbit-ring-2"></div>
+            <div class="orbit-ring orbit-ring-3"></div>
+            <div class="orbit-particle orbit-particle-1"></div>
+            <div class="orbit-particle orbit-particle-2"></div>
+            <div class="orbit-particle orbit-particle-3"></div>
+            <div class="orbit-particle orbit-particle-4"></div>
+            <div class="brand-core">
+              <div class="brand-logo-wrapper">
+                <div class="brand-logo-glow"></div>
+                <div class="brand-logo-container">
+                  <img src="logo.jpeg" alt="Upashiksha Academy" class="brand-logo-image"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="scroll-line">
+          <div class="scroll-dot"></div>
+        </div>
+      </div>
+
+      </div>
+
+    </section>
+
+    <section id="about" class="about-section reveal">
+  <div class="container">
+    <div class="about-header text-center reveal">
+      <div class="about-badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> About Upashiksha</div>
+      <h2 class="section-title">Shaping <span class="gradient-text">Future Leaders</span> Through Excellence</h2>
+      <p class="about-desc">Upashiksha Academy is built on a foundation of concept clarity, confidence building, and personalized education—making premium learning accessible to every student.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card reveal-stagger">
+        <div class="about-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+        </div>
+        <h3>Concepts Before Curriculum</h3>
+        <p>We focus on deep conceptual clarity, mentoring students to think critically rather than memorize answers, so they stay confident inside and outside examinations.</p>
+        <div class="tagline">Concept</div>
+        <ul class="about-features">
+          <li>Foundation-first approach to learning</li>
+          <li>Intuitive concept explanations</li>
+          <li>Real-world application focus</li>
+        </ul>
+      </div>
+
+      <div class="about-card reveal-stagger">
+        <div class="about-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10h-10V2z"></path><path d="M12 12l8.5 8.5"></path><path d="M12 12l-8.5 8.5"></path></svg>
+        </div>
+        <h3>Growth Culture</h3>
+        <p>Mentors coach with empathy, emphasizing resilience, curiosity and regular mental refreshers to build a positive learning mindset. Promoting growth culture</p>
+        <div class="tagline">Mindset</div>
+        <ul class="about-features">
+          <li>Resilience training & positive reinforcement</li>
+          <li>Curiosity-driven exploration</li>
+          <li>Mental well-being support</li>
+        </ul>
+      </div>
+
+      <div class="about-card reveal-stagger">
+        <div class="about-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m18 17-2-2-4 4-3-3-2 2"></path><path d="M18 9 l-2 2-4-4-3 3-2-2"></path></svg>
+        </div>
+        <h3>Analytics & Action</h3>
+        <p>Weekly tests + feedback keep progress measurable, actionable and motivating with personalized improvement plans & Individual attention</p>
+        <div class="tagline">Precision</div>
+        <ul class="about-features">
+          <li>Detailed performance analytics</li>
+          <li>Visual progress tracking</li>
+          <li>Targeted improvement strategies</li>
+        </ul>
+      </div>
+
+      <div class="about-card reveal-stagger">
+        <div class="about-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+        </div>
+        <h3>Future Ready</h3>
+        <p>Discipline, problem solving, and future-stream counselling ensure every student is prepared not just for exams but for life.</p>
+        <div class="tagline">Beyond</div>
+        <ul class="about-features">
+          <li>Career path guidance</li>
+          <li>Life skills development</li>
+          <li>Stream selection support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="believe" class="motto-panel motto-panel--believe">
+      <div class="motto-particles"><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div></div>
+      <div class="motto-panel-inner">
+        <div class="motto-big-word"><span class="motto-word-text" data-text="Believe.">Believe.</span></div>
+        <div class="motto-content">
+          <span class="motto-step">Step 01</span>
+          <h2 class="motto-title">Believe in Your Potential</h2>
+          <p class="motto-desc">Every topper begins with a belief. Our academy nurtures confidence with concept clarity and supportive mentors.</p>
+          <ul class="motto-features">
+            <li>Small, focused batches for personalised attention</li>
+            <li>Concept-first teaching with real-life intuition</li>
+            <li>Weekly check-ins to build confidence</li>
+          </ul>
+          <div class="motto-quote-card">
+            <p class="motto-quote">"When you believe you can, your preparation already has a head start."</p>
+            <span class="motto-quote-attr">Mindset · Confidence · Clarity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achieve" class="motto-panel motto-panel--achieve">
+      <div class="motto-particles"><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div></div>
+      <div class="motto-panel-inner">
+        <div class="motto-big-word"><span class="motto-word-text" data-text="Achieve.">Achieve.</span></div>
+        <div class="motto-content">
+          <span class="motto-step">Step 02</span>
+          <h2 class="motto-title">Achieve Consistent Results</h2>
+          <p class="motto-desc">From weekly tests to detailed analytics, we ensure effort translates into measurable progress.</p>
+          <ul class="motto-features">
+            <li>Weekly & monthly tests aligned with exam patterns</li>
+            <li>Detailed performance reports and mentor feedback</li>
+            <li>Time-management drills and exam training</li>
+          </ul>
+          <div class="motto-quote-card">
+            <p class="motto-quote">"Goals become results when guided practice meets the right strategy."</p>
+            <span class="motto-quote-attr">Tests · Analytics · Strategy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="excel" class="motto-panel motto-panel--excel">
+      <div class="motto-particles"><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div></div>
+      <div class="motto-panel-inner">
+        <div class="motto-big-word"><span class="motto-word-text" data-text="Excel.">Excel.</span></div>
+        <div class="motto-content">
+          <span class="motto-step">Step 03</span>
+          <h2 class="motto-title">Excel Beyond the Exam</h2>
+          <p class="motto-desc">We focus on discipline, consistency, and problem-solving skills for lifelong excellence.</p>
+          <ul class="motto-features">
+            <li>Revision marathons & unlimited doubt-clearing</li>
+            <li>Strategy sessions before major exams</li>
+            <li>Career guidance and stream selection</li>
+          </ul>
+          <div class="motto-quote-card">
+            <p class="motto-quote">"Excellence is the habit of doing the right things, again and again."</p>
+            <span class="motto-quote-attr">Discipline · Habits · Life Skills</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise" class="expertise-section">
+      <div class="container">
+        <div class="expertise-header reveal">
+          <div class="expertise-badge"><span>🎯</span> Our Expertise</div>
+          <h2 class="expertise-title">Comprehensive <span class="highlight">Academic Programs</span></h2>
+          <p class="expertise-subtitle">Specialized coaching from foundations to board excellence.</p>
+        </div>
+        <div class="expertise-grid">
+          <div class="expertise-card expertise-card--foundation reveal-stagger">
+            <div class="expertise-card-icon">📚</div>
+            <span class="expertise-card-label">Foundation</span>
+            <h3 class="expertise-card-title">Classes III – IX</h3>
+            <p class="expertise-card-subtitle">Building strong fundamentals with engaging methods.</p>
+            <div class="expertise-card-subjects">
+              <span class="subject-tag">📐 Mathematics</span>
+              <span class="subject-tag">🔬 Science</span>
+              <span class="subject-tag">📖 English</span>
+              <span class="subject-tag">🌍 Social Studies</span>
+            </div>
+          </div>
+          <div class="expertise-card expertise-card--board reveal-stagger">
+            <div class="expertise-card-icon">🏆</div>
+            <span class="expertise-card-label">Board Excellence</span>
+            <h3 class="expertise-card-title">Class X | ICSE · CBSE · State</h3>
+            <p class="expertise-card-subtitle">Intensive board exam preparation.</p>
+            <div class="expertise-card-subjects">
+              <span class="subject-tag">📐 Mathematics</span>
+              <span class="subject-tag">🧪 Physics</span>
+              <span class="subject-tag">⚗️ Chemistry</span>
+              <span class="subject-tag">🧬 Biology</span>
+            </div>
+          </div>
+          <div class="expertise-card expertise-card--puc reveal-stagger">
+            <div class="expertise-card-icon">📊</div>
+            <span class="expertise-card-label">Pre-University</span>
+            <h3 class="expertise-card-title">PUC I & II Year</h3>
+            <p class="expertise-card-subtitle">Commerce & Science stream coaching.</p>
+            <div class="expertise-card-subjects">
+              <span class="subject-tag">📐 Mathematics</span>
+              <span class="subject-tag">📈 Statistics</span>
+              <span class="subject-tag">💰 Accountancy</span>
+            </div>
+          </div>
+          <div class="expertise-card expertise-card--home reveal-stagger">
+            <div class="expertise-card-icon">🏠</div>
+            <span class="expertise-card-label">Home Tuition</span>
+            <h3 class="expertise-card-title">Classes V – XII</h3>
+            <p class="expertise-card-subtitle">One-on-one coaching at your doorstep.</p>
+            <div class="expertise-card-subjects">
+              <span class="subject-tag">📐 Mathematics</span>
+              <span class="subject-tag">🎯 All Boards</span>
+              <span class="subject-tag">⏰ Flexible</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="schedule-section">
+      <div class="container">
+        <div class="schedule-header reveal">
+          <div class="schedule-badge"><span>🕐</span> Our Schedule</div>
+          <h2 class="schedule-title">Flexible <span class="highlight">Learning Hours</span></h2>
+          <p class="schedule-subtitle">Multiple time slots to fit your schedule.</p>
+        </div>
+        <div class="schedule-grid">
+          <div class="schedule-card schedule-card--evening reveal-stagger">
+            <div class="schedule-card-icon">🌅</div>
+            <div class="schedule-card-label">Evening Batch</div>
+            <div class="schedule-card-time">5:30 PM – 7:00 PM</div>
+            <p class="schedule-card-note">90-minute intensive sessions after school.</p>
+          </div>
+          <div class="schedule-card schedule-card--morning reveal-stagger">
+            <div class="schedule-card-icon">🌄</div>
+            <div class="schedule-card-label">Morning Batch</div>
+            <div class="schedule-card-time">5:45 AM – 7:15 AM</div>
+            <p class="schedule-card-note">Early sessions for peak mental alertness.</p>
+          </div>
+          <div class="schedule-card schedule-card--home reveal-stagger">
+            <div class="schedule-card-icon">🏡</div>
+            <div class="schedule-card-label">Home Tuition</div>
+            <div class="schedule-card-time">As Per Request</div>
+            <p class="schedule-card-note">Flexible scheduling at your convenience.</p>
+          </div>
+        </div>
+        <div class="weekly-info reveal">
+          <div class="weekly-info-icon">📅</div>
+          <h3 class="weekly-info-title">Weekly Schedule</h3>
+          <div class="weekly-info-content">
+            <div class="weekly-item"><span>🎉</span><span><strong>Week 1 & 3:</strong> Sunday Holiday</span></div>
+            <div class="weekly-item"><span>📝</span><span><strong>Week 2 & 4:</strong> Sunday Assessments</span></div>
+          </div>
+        </div>
+        <div class="cta-banner reveal">
+          <h3 class="cta-banner-title">Ready to Begin Your Academic Journey?</h3>
+          <p class="cta-banner-text">Join students who transformed their performance with Upashiksha Academy.</p>
+          <button class="cta-btn" onclick="openModal()"><span>Get Started Today</span><span>→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Contact Us</h2>
+          <p class="section-desc">Reach out using your preferred platform.</p>
+        </div>
+        <div class="contact-cards">
+          <a class="contact-card reveal" href="tel:+919876543210">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="contact-text"><span class="contact-title">Phone</span><span class="contact-note">Tap to call</span></div>
+          </a>
+          <a class="contact-card reveal" href="mailto:info@upashiksha.com">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <div class="contact-text"><span class="contact-title">Email</span><span class="contact-note">Send us queries</span></div>
+          </a>
+          <a class="contact-card reveal" href="https://instagram.com/upashiksha" target="_blank">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+            <div class="contact-text"><span class="contact-title">Instagram</span><span class="contact-note">Results & updates</span></div>
+          </a>
+          <a class="contact-card reveal" href="https://wa.me/919876543210" target="_blank">
+            <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></div>
+            <div class="contact-text"><span class="contact-title">WhatsApp</span><span class="contact-note">Chat with us</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Registration Modal -->
+  <div id="modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="registration-form">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="form-header">
+          <img src="logo.jpeg" alt="Upashiksha Academy Logo" class="form-logo"/>
+          <h2 class="form-title">Join Upashiksha Academy</h2>
+          <p class="form-subtitle">Register for personalized coaching and excel in your studies.</p>
+        </div>
+        <form id="regForm" class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="studentName">Student Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input type="text" id="studentName" class="form-input" placeholder="Enter student's full name" required>
+            </div>
+            <div class="error-message" id="studentNameErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="parentName">Parent Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input type="text" id="parentName" class="form-input" placeholder="Enter parent's full name" required>
+            </div>
+            <div class="error-message" id="parentNameErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="parentPhone">Parent Phone <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input type="tel" id="parentPhone" class="form-input" placeholder="+91 9876543210" required>
+            </div>
+            <div class="error-message" id="parentPhoneErr"></div>
+          </div>
+          <div class="form-group" id="studentPhoneGroup" style="display: none;">
+            <label class="form-label" for="studentPhone">Student Phone</label>
+            <div class="input-wrapper">
+              <input type="tel" id="studentPhone" class="form-input" placeholder="+91 9876543210">
+            </div>
+            <div class="error-message" id="studentPhoneErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="studentEmail">Student Email <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input type="email" id="studentEmail" class="form-input" placeholder="student@example.com" required>
+            </div>
+            <div class="error-message" id="studentEmailErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="parentEmail">Parent Email <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input type="email" id="parentEmail" class="form-input" placeholder="parent@example.com" required>
+            </div>
+            <div class="error-message" id="parentEmailErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="schoolName">School Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <input type="text" id="schoolName" class="form-input" placeholder="Enter school name" required>
+            </div>
+            <div class="error-message" id="schoolNameErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="classStudying">Class Studying <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <select id="classStudying" class="form-select" required>
+                <option value="">Select Class</option>
+                <option value="III">III</option>
+                <option value="IV">IV</option>
+                <option value="V">V</option>
+                <option value="VI">VI</option>
+                <option value="VII">VII</option>
+                <option value="VIII">VIII</option>
+                <option value="IX">IX</option>
+                <option value="X">X</option>
+                <option value="XI">XI</option>
+                <option value="XII">XII</option>
+              </select>
+            </div>
+            <div class="error-message" id="classStudyingErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="coachingType">Coaching Type <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <select id="coachingType" class="form-select" required>
+                <option value="">Select Type</option>
+                <option value="academy">Academy</option>
+                <option value="home">Home Tuition</option>
+              </select>
+            </div>
+            <div class="error-message" id="coachingTypeErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="syllabus">Syllabus <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <select id="syllabus" class="form-select" required>
+                <option value="">Select Syllabus</option>
+                <option value="cbse">CBSE</option>
+                <option value="icse">ICSE</option>
+                <option value="state">State Board</option>
+                <option value="ib">IB</option>
+              </select>
+            </div>
+            <div class="error-message" id="syllabusErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <select id="subject" class="form-select" required>
+                <option value="">Select Subject</option>
+              </select>
+            </div>
+            <div class="error-message" id="subjectErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="slot">Preferred Slot <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <select id="slot" class="form-select" required>
+                <option value="">Select Slot</option>
+                <option value="morning">Morning (5:45 AM - 7:15 AM)</option>
+                <option value="evening">Evening (5:30 PM - 7:00 PM)</option>
+                <option value="home">Home Tuition (Flexible)</option>
+              </select>
+            </div>
+            <div class="error-message" id="slotErr"></div>
+          </div>
+          <div class="form-submit-container">
+            <button type="submit" class="form-submit">
+              <span class="form-submit-text">Register Now <span class="form-submit-icon">→</span></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Upashiksha Academy. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#expertise">Programs</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initial scroll reset execution (moved for strict control)
+    (function() {
+      window.history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+      if (window.location.hash) {
+        history.replaceState(null, null, window.location.pathname);
+      }
+    })();
+
+    // Mobile nav
+    const navToggle=document.getElementById('nav-toggle');
+    navToggle.addEventListener('click',()=>{
+      navToggle.classList.toggle('is-open');
+      document.body.classList.toggle('nav-open');
+    });
+    document.getElementById('primary-nav').addEventListener('click',e=>{
+      if(e.target.classList.contains('nav-link')){
+        document.body.classList.remove('nav-open');
+        navToggle.classList.remove('is-open');
+      }
+    });
+
+    // Theme toggle
+    const root=document.documentElement;
+    const saved=localStorage.getItem('theme');
+    if(saved)root.setAttribute('data-theme',saved);
+    else root.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    document.getElementById('theme-toggle').addEventListener('click',()=>{
+      const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+      root.setAttribute('data-theme',next);
+      localStorage.setItem('theme',next);
+    });
+
+    // Reveal animations
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target);}});
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal,.reveal-stagger,.motto-panel').forEach(el=>observer.observe(el));
+
+    // Footer year
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    // Modal functions
+    const modal=document.getElementById('modal');
+    function openModal(){
+      modal.classList.add('is-active');
+      document.body.style.overflow='hidden';
+      // Reset animations
+      document.querySelectorAll('.form-group, .form-divider, .form-section-title, .form-submit-container').forEach((el,i)=>{
+        el.style.animation='none';
+        el.offsetHeight; // Trigger reflow
+        el.style.animation='';
+      });
+    }
+    function closeModal(){modal.classList.remove('is-active');document.body.style.overflow='';}
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+
+    // Form logic
+    const form=document.getElementById('regForm');
+    const classSelect=document.getElementById('classStudying');
+    const coachingSelect=document.getElementById('coachingType');
+    const subjectSelect=document.getElementById('subject');
+    const studentPhoneGroup=document.getElementById('studentPhoneGroup');
+
+    const subjectsMap={
+      foundation:['MATHEMATICS','SCIENCE','ENGLISH','SOCIAL STUDIES','ALL OF THE ABOVE'],
+      classX:['MATHEMATICS','PHYSICS','CHEMISTRY','BIOLOGY'],
+      puc:['MATHEMATICS','STATISTICS','ACCOUNTANCY'],
+      home:['MATHEMATICS']
+    };
+
+    function updateSubjects(){
+      const cls=classSelect.value;
+      const coaching=coachingSelect.value;
+      subjectSelect.innerHTML='<option value="">Select subject</option>';
+      
+      let subjects=[];
+      if(coaching==='home'){
+        subjects=subjectsMap.home;
+      }else if(['III','IV','V','VI','VII','VIII','IX'].includes(cls)){
+        subjects=subjectsMap.foundation;
+      }else if(cls==='X'){
+        subjects=subjectsMap.classX;
+      }else if(['XI','XII'].includes(cls)){
+        subjects=subjectsMap.puc;
+      }
+      
+      subjects.forEach(s=>{
+        const opt=document.createElement('option');
+        opt.value=s;opt.textContent=s;
+        subjectSelect.appendChild(opt);
+      });
+    }
+
+    function updateStudentPhone(){
+      const cls=classSelect.value;
+      if(['X','XI','XII'].includes(cls)){
+        studentPhoneGroup.classList.remove('hidden');
+        studentPhoneGroup.style.animation='formFieldIn .4s ease forwards';
+      }else{
+        studentPhoneGroup.classList.add('hidden');
+        document.getElementById('studentPhone').value='';
+      }
+    }
+
+    classSelect.addEventListener('change',()=>{updateSubjects();updateStudentPhone();});
+    coachingSelect.addEventListener('change',updateSubjects);
+
+    // Focus/blur effects for labels
+    document.querySelectorAll('.form-input, .form-select').forEach(el=>{
+      el.addEventListener('focus',()=>{
+        el.closest('.form-group').classList.add('focused');
+      });
+      el.addEventListener('blur',()=>{
+        el.closest('.form-group').classList.remove('focused');
+      });
+      // Mark select as filled when changed
+      if(el.tagName==='SELECT'){
+        el.addEventListener('change',()=>{
+          if(el.value){
+            el.classList.add('filled');
+          }else{
+            el.classList.remove('filled');
+          }
+        });
+      }
+    });
+
+    // Validation helpers
+    function showError(id,msg){
+      const el=document.getElementById(id);
+      const err=document.getElementById(id+'Err');
+      el.classList.add('error');
+      err.textContent=msg;
+      err.classList.add('visible');
+    }
+    function clearError(id){
+      const el=document.getElementById(id);
+      const err=document.getElementById(id+'Err');
+      if(el)el.classList.remove('error');
+      if(err){err.textContent='';err.classList.remove('visible');}
+    }
+    function clearAllErrors(){
+      ['studentName','parentName','parentPhone','studentPhone','studentEmail','parentEmail','schoolName','classStudying','coachingType','syllabus','subject','slot'].forEach(clearError);
+    }
+
+    const phoneRegex=/^[+]?[\d\s-]{10,15}$/;
+    const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function extractNameFromEmail(email){
+      const local=email.split('@')[0].toLowerCase();
+      return local.replace(/[^a-z]/g,'');
+    }
+
+    form.addEventListener('submit',e=>{
+      e.preventDefault();
+      clearAllErrors();
+      let valid=true;
+
+      const studentName=document.getElementById('studentName').value.trim();
+      const parentName=document.getElementById('parentName').value.trim();
+      const parentPhone=document.getElementById('parentPhone').value.trim();
+      const studentPhone=document.getElementById('studentPhone').value.trim();
+      const studentEmail=document.getElementById('studentEmail').value.trim();
+      const parentEmail=document.getElementById('parentEmail').value.trim();
+      const schoolName=document.getElementById('schoolName').value.trim();
+      const cls=classSelect.value;
+      const coaching=coachingSelect.value;
+      const syllabus=document.getElementById('syllabus').value;
+      const subject=subjectSelect.value;
+      const slot=document.getElementById('slot').value;
+
+      // Required field validation
+      if(!studentName){showError('studentName','Student name is required');valid=false;}
+      if(!parentName){showError('parentName','Parent name is required');valid=false;}
+      if(!parentPhone){showError('parentPhone','Parent phone is required');valid=false;}
+      else if(!phoneRegex.test(parentPhone)){showError('parentPhone','Invalid phone number');valid=false;}
+      if(!studentEmail){showError('studentEmail','Student email is required');valid=false;}
+      else if(!emailRegex.test(studentEmail)){showError('studentEmail','Invalid email format');valid=false;}
+      if(!parentEmail){showError('parentEmail','Parent email is required');valid=false;}
+      else if(!emailRegex.test(parentEmail)){showError('parentEmail','Invalid email format');valid=false;}
+      if(!schoolName){showError('schoolName','School name is required');valid=false;}
+      if(!cls){showError('classStudying','Please select a grade');valid=false;}
+      if(!coaching){showError('coachingType','Please select coaching type');valid=false;}
+      if(!syllabus){showError('syllabus','Please select syllabus');valid=false;}
+      if(!subject){showError('subject','Please select a subject');valid=false;}
+      if(!slot){showError('slot','Please select a time slot');valid=false;}
+
+      // Email match validation
+      if(studentEmail&&parentEmail&&studentEmail.toLowerCase()===parentEmail.toLowerCase()){
+        showError('parentEmail','Please enter parent\'s email correctly');valid=false;
+      }
+
+      // Check if student name appears in parent email
+      if(studentName&&parentEmail){
+        const nameParts=studentName.toLowerCase().split(/\s+/);
+        const parentEmailLocal=extractNameFromEmail(parentEmail);
+        const nameInParentEmail=nameParts.some(part=>part.length>2&&parentEmailLocal.includes(part));
+        if(nameInParentEmail){
+          showError('parentEmail','Please enter parent\'s email correctly');valid=false;
+        }
+      }
+
+      // Phone match validation (if student phone visible)
+      if(!studentPhoneGroup.classList.contains('hidden')&&studentPhone){
+        if(!phoneRegex.test(studentPhone)){showError('studentPhone','Invalid phone number');valid=false;}
+        else if(studentPhone.replace(/\D/g,'')===parentPhone.replace(/\D/g,'')){
+          showError('studentPhone','Student and parent phone cannot be the same');valid=false;
+        }
+      }
+
+      if(valid){
+        alert('Registration submitted successfully! We will contact you soon.');
+        form.reset();
+        subjectSelect.innerHTML='<option value="">Select grade first</option>';
+        studentPhoneGroup.classList.add('hidden');
+        document.querySelectorAll('.form-select').forEach(el=>el.classList.remove('filled'));
+        closeModal();
+      }
+    });
+
+    // Real-time validation feedback
+    document.querySelectorAll('.form-input,.form-select').forEach(el=>{
+      el.addEventListener('input',()=>clearError(el.id));
+      el.addEventListener('change',()=>clearError(el.id));
+    });
+  </script>
+</body>
+</html>
