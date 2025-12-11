@@ -1242,6 +1242,48 @@ html[data-theme="light"] .about-card-icon svg {
     </div>
   </div>
 
+  <!-- Online Classes Modal -->
+  <div id="onlineClassesModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="registration-form">
+        <button class="modal-close" onclick="closeOnlineClassesModal()">&times;</button>
+        <div class="form-header">
+          <img src="logo.jpeg" alt="Upashiksha Academy Logo" class="form-logo"/>
+          <h2 class="form-title">Coming Soon!</h2>
+          <p class="form-subtitle">Online Classes Platform</p>
+        </div>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <div style="text-align: center; padding: 2rem;">
+              <h3 style="color: var(--form-text-bold); margin-bottom: 1rem;">Exciting Updates Ahead!</h3>
+              <p style="color: var(--muted); margin-bottom: 1rem; line-height: 1.6;">
+                Our team, teachers, and tech experts are working tirelessly to bring you an exceptional online learning experience. Stay tuned for interactive classes, personalized dashboards, and seamless access to quality education from anywhere.
+              </p>
+              <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                  <path d="M10 9H8"/>
+                  <path d="M16 13H8"/>
+                  <path d="M16 17H8"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Registration Modal -->
   <div id="modal" class="modal-overlay">
     <div class="modal-container">
@@ -1453,6 +1495,14 @@ html[data-theme="light"] .about-card-icon svg {
     }
     function closeLocationModal(){locationModal.classList.remove('is-active');document.body.style.overflow='';}
     locationModal.addEventListener('click',e=>{if(e.target===locationModal)closeLocationModal();});
+
+    const onlineClassesModal=document.getElementById('onlineClassesModal');
+    function openOnlineClassesModal(){
+      onlineClassesModal.classList.add('is-active');
+      document.body.style.overflow='hidden';
+    }
+    function closeOnlineClassesModal(){onlineClassesModal.classList.remove('is-active');document.body.style.overflow='';}
+    onlineClassesModal.addEventListener('click',e=>{if(e.target===onlineClassesModal)closeOnlineClassesModal();});
 
     // Form logic
     const form=document.getElementById('regForm');
