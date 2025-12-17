@@ -26,7 +26,7 @@
     .logo-text{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.1rem;color:var(--text)}
     .logo-text-highlight{font-family:'Fredoka',sans-serif;font-weight:700;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .nav-links{display:flex;align-items:center;gap:1.5rem;font-size:.94rem}
-    .nav-link{position:relative;padding:.2rem 0;color:var(--text);transition:color .18s}
+    .nav-link{position:relative;padding:.2rem 0;color:var(--text);transition:color .18s;cursor:pointer}
     .nav-link::after{content:"";position:absolute;left:0;bottom:-.3rem;width:0;height:2px;border-radius:999px;background:var(--accent);transition:width .25s}
     .nav-link:hover{color:var(--accent)}
     .nav-link:hover::after{width:100%}
@@ -180,59 +180,48 @@ html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,25
 
     /* Sections */
     .content-section{padding:5rem 0;background:var(--bg);border-top:1px solid var(--border-subtle)}
-    .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:start;text-align:center}
-    @media(max-width:900px){.about-grid{grid-template-columns:1fr;text-align:center}.about-grid>div:first-child{display:flex;flex-direction:column;align-items:center}.section-desc{max-width:600px}}
+    .about-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:1.5rem;align-items:start}
+    @media(max-width:900px){.about-grid{grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));text-align:center}.about-grid>div:first-child{display:flex;flex-direction:column;align-items:center}.section-desc{max-width:600px}}
     .section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:1rem;color:var(--text)}
     .section-desc{font-size:1rem;color:var(--muted);margin-bottom:1rem;line-height:1.7}
-.about-card{position:relative;border-radius:var(--radius-lg);padding:1.5rem;box-shadow:var(--shadow-soft);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden;min-height:320px;text-align:center}
+.about-card{position:relative;border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--shadow-soft);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;overflow:hidden;min-height:360px;text-align:left;display:flex;flex-direction:column;border:1px solid var(--border-subtle)}
     .about-card::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border-radius:var(--radius-lg);padding:2px;background:linear-gradient(135deg,var(--accent),var(--accent-2),var(--accent-3));mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask-composite:xor;opacity:0;transition:opacity .3s ease}
-    .about-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,0.15)}
+    .about-card:hover{transform:translateY(-10px);box-shadow:0 30px 60px rgba(0,0,0,0.2);border-color:var(--accent)}
     .about-card:hover::before{opacity:1}
-    @media(max-width:900px){.about-card{text-align:left}.about-card h3{text-align:center}}
-    html[data-theme="dark"] .about-card{background:rgba(30,41,59,0.8);border:1px solid var(--border-subtle)}
-    html[data-theme="light"] .about-card{background:linear-gradient(135deg,#1e3a5f,#2563eb);border-color:transparent}
-/* Uniform solid blue backgrounds for all cards */
-html[data-theme="light"] .about-card{background:#2563eb}
-html[data-theme="dark"] .about-card{background:#1e3a5f}
-/* Text colors for solid backgrounds */
-.about-card h3{color:#fff;font-weight:700}
-.about-card p{color:rgba(255,255,255,0.9);font-weight:600}
-.about-card .tagline{color:#fff;font-weight:700;text-align:center}
+    @media(max-width:900px){.about-card{text-align:center}.about-card h3{text-align:center}.about-card-icon{margin:0 auto 1.25rem}}
+    html[data-theme="dark"] .about-card{background:#1e3a5f}
+    html[data-theme="light"] .about-card{background:#2563eb;border-color:transparent}
     /* Animation for card entrance */
-    .about-card{animation:cardSlideIn .6s ease-out backwards}
+    .about-card{animation:cardSlideIn .7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;transform-origin:bottom center}
     .about-card:nth-child(1){animation-delay:.1s}
     .about-card:nth-child(2){animation-delay:.2s}
     .about-card:nth-child(3){animation-delay:.3s}
     .about-card:nth-child(4){animation-delay:.4s}
-    @keyframes cardSlideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    .about-card h3{font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--text)}
-    html[data-theme="light"] .about-card h3{color:#fff}
-    .about-card ul{list-style:none}
-    .about-card li{position:relative;padding-left:1.2rem;margin-bottom:.5rem;font-size:.95rem;color:var(--muted)}
-    html[data-theme="light"] .about-card li{color:rgba(255,255,255,0.9)}
-    .about-card li::before{content:"→";position:absolute;left:0;color:var(--accent)}
-    html[data-theme="light"] .about-card li::before{color:#38bdf8}
+    @keyframes cardSlideIn{from{opacity:0;transform:translateY(50px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .about-card h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem;color:#fff;text-align: center;}
+    .about-card p{font-size:.95rem;margin-bottom:1rem;line-height:1.6;color:#fff;font-weight:600}
+    .about-card .tagline{display:inline-block;font-size:.85rem;font-weight:700;letter-spacing:.05em;padding:.35rem .8rem;border-radius:999px;margin-bottom:1.25rem;color:#fff;text-align:center}
+    html[data-theme="dark"] .about-card .tagline{background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3)}
+    html[data-theme="light"] .about-card .tagline{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2)}
+    .about-features{list-style:none;margin-top:auto;margin-bottom:0}
+    .about-features li{position:relative;padding-left:1.25rem;margin-bottom:.5rem;font-size:.9rem;color:#fff;font-weight:600}
+    .about-features li::before{content:"→";position:absolute;left:0;color:#fff}
 
-    /* Responsive adjustments for about section */
-    @media(max-width:768px){
-      .about-grid{grid-template-columns:1fr;gap:2rem}
-      .about-card{padding:1rem;border-radius:16px}
-      .about-card h3{font-size:1rem;margin-bottom:0.75rem}
-      .about-card p{font-size:0.9rem;margin-bottom:1rem}
-      .about-card ul{margin-bottom:0}
-      .about-card li{font-size:0.85rem;padding-left:1rem;margin-bottom:0.4rem}
-      .about-card li::before{font-size:0.8rem}
-      .tagline{font-size:0.85rem}
-    }
-    @media(max-width:480px){
-      .about-section{padding:4rem 0}
-      .about-grid{grid-template-columns:1fr;gap:1.5rem}
-      .about-card{padding:0.875rem;border-radius:12px}
-      .about-card h3{font-size:0.95rem;margin-bottom:0.5rem}
-      .about-card p{font-size:0.85rem;margin-bottom:0.75rem}
-      .about-card li{font-size:0.8rem;padding-left:0.875rem;margin-bottom:0.3rem}
-      .tagline{font-size:0.8rem}
-    }
+    .about-card-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;position:relative;overflow:hidden}
+    html[data-theme="dark"] .about-card-icon{background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(99,102,241,0.2));border:1px solid rgba(56,189,248,0.3)}
+    html[data-theme="light"] .about-card-icon{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2)}
+    .about-card-icon svg{width:24px;height:24px;stroke-width:2;position:relative;z-index:2}
+    html[data-theme="dark"] .about-card-icon svg{stroke:#FFD700}
+    html[data-theme="light"] .about-card-icon svg{stroke:#fff}
+    .about-card-icon::after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.3) 50%,transparent 60%);transform:rotate(45deg);animation:iconShine 3s infinite}
+    @keyframes iconShine{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
+
+    /* About section */
+    .about-section{padding:6rem 0;background:radial-gradient(ellipse at 50% 0%,rgba(56,189,248,0.08),transparent 50%),radial-gradient(ellipse at 0% 100%,rgba(99,102,241,0.06),transparent 50%),var(--bg);position:relative;overflow:hidden;border-top:1px solid var(--border-subtle)}
+    .about-header{text-align:center;margin-bottom:3rem}
+    .about-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.5rem 1.25rem;border-radius:999px;margin-bottom:1.25rem;background:linear-gradient(135deg,rgba(56,189,248,0.15),rgba(99,102,241,0.15));border:1px solid rgba(56,189,248,0.3);color:var(--accent)}
+    .about-badge svg{width:16px;height:16px;stroke:var(--accent)}
+    .about-desc{font-size:1.1rem;color:var(--muted);max-width:700px;margin:0 auto 2rem;line-height:1.6}
 
     /* Expertise */
     .expertise-section{padding:6rem 0;position:relative;overflow:hidden;border-top:1px solid var(--border-subtle)}
@@ -261,7 +250,6 @@ html[data-theme="dark"] .about-card{background:#1e3a5f}
     .expertise-card--puc .expertise-card-icon{background:linear-gradient(135deg,#10b981,#047857);box-shadow:0 10px 30px rgba(16,185,129,0.3)}
     .expertise-card--home .expertise-card-icon{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 10px 30px rgba(245,158,11,0.3)}
     .expertise-card-icon::after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 40%,rgba(255,255,255,0.3) 50%,transparent 60%);animation:iconShine 3s infinite}
-    @keyframes iconShine{0%{transform:translateX(-100%) rotate(45deg)}100%{transform:translateX(100%) rotate(45deg)}}
     .expertise-card-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .75rem;border-radius:999px;margin-bottom:.75rem}
     .expertise-card--foundation .expertise-card-label{background:rgba(59,130,246,0.15);color:#3b82f6;border:1px solid rgba(59,130,246,0.3)}
     .expertise-card--board .expertise-card-label{background:rgba(139,92,246,0.15);color:#8b5cf6;border:1px solid rgba(139,92,246,0.3)}
@@ -273,7 +261,6 @@ html[data-theme="dark"] .about-card{background:#1e3a5f}
     .subject-tag{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:600;padding:.4rem .75rem;border-radius:999px;background:rgba(148,163,184,0.1);border:1px solid var(--border-subtle);color:var(--text);transition:all .2s}
     .subject-tag:hover{transform:translateY(-2px)}
 
-    /* Mobile adjustments for expertise section */
     @media(max-width:768px){
       .expertise-card{text-align:center}
       .expertise-card-icon{margin:0 auto 1.25rem}
@@ -380,76 +367,44 @@ html[data-theme="dark"] .about-card{background:#1e3a5f}
     .reveal-stagger:nth-child(3){transition-delay:.3s}
     .reveal-stagger:nth-child(4){transition-delay:.4s}
 
-    /* ========================================
-       REDESIGNED REGISTRATION FORM - CLEAN
-       ======================================== */
-    .modal-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.7);
-      backdrop-filter:blur(8px);
-      z-index:1000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:1rem;
-      opacity:0;
-      visibility:hidden;
-      transition:opacity .3s ease,visibility .3s ease;
-    }
+    /* Modal */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
     .modal-overlay.is-active{opacity:1;visibility:visible}
-    
-    .modal-container{
-      position:relative;
-      width:100%;
-      max-width:680px;
-      max-height:90vh;
-      overflow-y:auto;
-      border-radius:20px;
-      opacity:0;
-      /* Removed transform for better native rendering alignment */
-      transition:opacity .4s ease;
-    }
-    .modal-overlay.is-active .modal-container{opacity:1;}
-    
-    /* Scrollbar styling */
+    .modal-container{position:relative;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;border-radius:20px;opacity:0;transition:opacity .4s ease}
+    .modal-overlay.is-active .modal-container{opacity:1}
     .modal-container::-webkit-scrollbar{width:6px}
     .modal-container::-webkit-scrollbar-track{background:transparent}
     .modal-container::-webkit-scrollbar-thumb{background:var(--form-border);border-radius:3px}
     .modal-container::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
     @media(max-width:600px){
-      /* FIX: Ensure the modal takes up appropriate height and allows scrolling */
-      .modal-container{
-        max-width:none;
-        width:calc(100vw - 2rem); 
-        height:95vh;
-        max-height:95vh; 
-        border-radius:20px;
-        overflow-y:auto; 
-      }
+      .modal-container{max-width:none;width:calc(100vw - 2rem);height:95vh;max-height:95vh;border-radius:20px;overflow-y:auto}
       .registration-form{padding:1.5rem}
     }
 
     .registration-form{background:var(--form-card-bg);border:1px solid var(--form-border);padding:2.5rem 2rem;border-radius:20px;position:relative}
     @media(max-width:600px){.registration-form{padding:2rem 1.25rem}}
     
-    /* Close button */
+    /* Subject checkbox group styling */
+    .subject-checkbox-group{display:flex;flex-wrap:wrap;gap:0.5rem 0.75rem}
+    .subject-checkbox-item{display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.75rem;border-radius:999px;border:1px solid var(--form-border);background:var(--form-input-bg);font-size:0.85rem;color:var(--form-text-bold);cursor:pointer;transition:all 0.2s ease}
+    .subject-checkbox-item input[type="checkbox"]{accent-color:var(--form-focus);width:14px;height:14px;cursor:pointer}
+    .subject-checkbox-item:hover{border-color:var(--accent);box-shadow:0 0 0 2px rgba(56,189,248,0.15)}
+    .subject-checkbox-item.selected{border-color:var(--accent-3);background:rgba(16,185,129,0.08)}
+    .subject-checkbox-group.error{box-shadow:0 0 0 2px rgba(239,68,68,0.4);border-radius:12px;padding:0.25rem}
+
     .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:1px solid var(--form-border);background:var(--form-bg);color:var(--form-text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.3rem;transition:all .25s ease;z-index:10}
     .modal-close:hover{background:#ef4444;border-color:#ef4444;color:#fff;transform:scale(1.1)}
     
-    /* Form header */
     .form-header{text-align:center;margin-bottom:2rem}
     .form-logo{width:70px;height:70px;border-radius:16px;object-fit:contain;margin-bottom:1rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);transition:transform .3s ease}
     .form-logo:hover{transform:scale(1.05)}
     .form-title{font-family:'Fredoka',sans-serif;font-size:1.5rem;font-weight:700;color:var(--form-text-bold);margin-bottom:.5rem}
     .form-subtitle{font-size:.95rem;color:var(--muted)}
     
-    /* Form grid */
     .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
     @media(max-width:600px){.form-grid{grid-template-columns:1fr;gap:1rem}}
     
-    /* Form groups with stagger animation */
     .form-group{position:relative;opacity:0;transform:translateY(15px);animation:formFieldIn .4s ease forwards}
     .form-group:nth-child(1){animation-delay:.05s}
     .form-group:nth-child(2){animation-delay:.1s}
@@ -469,397 +424,77 @@ html[data-theme="dark"] .about-card{background:#1e3a5f}
     .form-group.full-width{grid-column:1/-1}
     .form-group.hidden{display:none}
     
-    /* Labels - darker and bolder */
     .form-label{display:block;font-size:.8rem;font-weight:700;color:var(--form-text-bold);margin-bottom:.5rem;letter-spacing:.02em;transition:color .25s ease}
     .form-label .required{color:#ef4444;margin-left:.2rem;font-weight:700}
     
-    /* Input wrapper for animations */
     .input-wrapper{position:relative}
     
-    /* Inputs and selects */
-    .form-input,.form-select{
-      width:100%; 
-      padding:.875rem 1rem;
-      border-radius:12px;
-      font-size:.95rem;
-      font-weight:500;
-      font-family:inherit;
-      color:var(--form-text-bold);
-      background:var(--form-input-bg);
-      border:2px solid var(--form-border);
-      transition:all .3s ease;
-      -webkit-appearance:none;
-      appearance:none;
-      max-width:100%; 
-    }
-    
+    .form-input,.form-select{width:100%;padding:.875rem 1rem;border-radius:12px;font-size:.95rem;font-weight:500;font-family:inherit;color:var(--form-text-bold);background:var(--form-input-bg);border:2px solid var(--form-border);transition:all .3s ease;-webkit-appearance:none;appearance:none;max-width:100%}
     .form-input::placeholder{color:var(--muted);font-weight:400}
-    
-    /* Focus states with smooth animation */
-    /* Removed transform: translateY(-2px) to prevent layout shift issues with dropdowns */
-    .form-input:focus,.form-select:focus{outline:none;border-color:var(--form-focus);box-shadow:0 0 0 4px rgba(56,189,248,0.15);}
+    .form-input:focus,.form-select:focus{outline:none;border-color:var(--form-focus);box-shadow:0 0 0 4px rgba(56,189,248,0.15)}
     html[data-theme="light"] .form-input:focus,html[data-theme="light"] .form-select:focus{box-shadow:0 0 0 4px rgba(37,99,235,0.15)}
-    
-    /* Hover states */
     .form-input:hover:not(:focus),.form-select:hover:not(:focus){border-color:var(--accent);background:var(--form-input-bg)}
-    
-    /* Select styling */
-    .form-select{
-      cursor:pointer;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat:no-repeat;
-      background-position:right 1rem center;
-      background-size:1.1rem;
-      padding-right:2.75rem
-    }
-    
-    /* FIX: Ensure select options are legible in all themes/browsers by setting explicit colors. */
-    .form-select option{
-      background:var(--form-card-bg); 
-      color:var(--form-text-bold);
-      padding:.5rem;
-    }
-    
-    /* Error states */
+    .form-select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:1.1rem;padding-right:2.75rem}
+    .form-select option{background:var(--form-card-bg);color:var(--form-text-bold);padding:.5rem}
     .form-input.error,.form-select.error{border-color:#ef4444;animation:shake .4s ease}
     @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-    
     .error-message{font-size:.75rem;font-weight:600;color:#ef4444;margin-top:.4rem;display:none;opacity:0;transform:translateY(-5px);transition:all .25s ease}
     .error-message.visible{display:block;opacity:1;transform:translateY(0)}
-    
-    /* Filled state indicator */
     .form-input:not(:placeholder-shown),.form-select:not([value=""]){border-color:var(--accent-3)}
     .form-input:not(:placeholder-shown):not(:focus),.form-select.filled:not(:focus){border-color:rgba(16,185,129,0.5)}
-    
-    /* Submit container */
     .form-submit-container{grid-column:1/-1;margin-top:1rem;opacity:0;transform:translateY(15px);animation:formFieldIn .4s ease .7s forwards}
-    
-    /* Submit button */
     .form-submit{width:100%;padding:1rem 1.5rem;border-radius:12px;font-size:1rem;font-weight:700;font-family:'Fredoka',sans-serif;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;cursor:pointer;position:relative;overflow:hidden;transition:all .3s ease;box-shadow:0 4px 15px rgba(56,189,248,0.3)}
-    
     .form-submit:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(56,189,248,0.4)}
     .form-submit:active{transform:translateY(-1px)}
-    
-    /* Submit button shine effect */
     .form-submit::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);transition:left .5s ease}
     .form-submit:hover::before{left:100%}
-    
     .form-submit-text{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:.5rem}
     .form-submit-icon{font-size:1.1rem;transition:transform .3s ease}
     .form-submit:hover .form-submit-icon{transform:translateX(5px)}
-    
-    /* Input icons (optional enhancement) */
-    .input-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.1rem;pointer-events:none}
-    .form-input:focus ~ .input-icon,.form-select:focus ~ .input-icon{color:var(--accent)}
-    .form-input.has-icon,.form-select.has-icon{padding-left:2.75rem}
-    
-    /* Label float animation (when focused) */
     .form-group.focused .form-label{color:var(--accent)}
-    
-    /* Success state */
     .form-group.success .form-input,.form-group.success .form-select{border-color:var(--accent-3)}
     .form-group.success .form-label{color:var(--accent-3)}
-    
-    /* Divider */
     .form-divider{grid-column:1/-1;height:1px;background:var(--form-border);margin:.5rem 0;opacity:0;animation:formFieldIn .4s ease .35s forwards}
-    
-    /* Section titles within form */
     .form-section-title{grid-column:1/-1;font-size:.85rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-top:.5rem;opacity:0;animation:formFieldIn .4s ease .35s forwards}
 
-/* About section refined styling */
-.about-section {
-  padding: 6rem 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.08), transparent 50%),
-              radial-gradient(ellipse at 0% 100%, rgba(99, 102, 241, 0.06), transparent 50%),
-              var(--bg);
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid var(--border-subtle);
-}
+    /* Carousel Styles */
+    .carousel-wrapper{position:relative;overflow:hidden;border-radius:24px;padding:1rem 0}
+    .carousel-track{display:flex;gap:1.25rem;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
+    .gallery-item{min-width:320px;height:200px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;box-shadow:var(--shadow-soft);position:relative;overflow:hidden;flex-shrink:0}
+    .gallery-item::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25),transparent 70%);transform:translateX(-100%);animation:shine 4s infinite}
+    @keyframes shine{to{transform:translateX(100%)}}
+    .gallery-item:hover{transform:scale(1.05);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+    .feedback-card{min-width:360px;background:var(--card-bg);border:1px solid var(--border-subtle);box-shadow:var(--shadow-soft);padding:1.75rem;border-radius:20px;flex-shrink:0;text-align:center}
+    html[data-theme="dark"] .feedback-card{background:rgba(30,41,59,0.9)}
+    html[data-theme="light"] .feedback-card{background:rgba(255,255,255,0.95)}
+    .feedback-header{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem}
+    .feedback-avatar{font-size:2.5rem}
+    .feedback-meta{display:flex;flex-direction:column;gap:.25rem;align-items:center}
+    .feedback-tag{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:999px;background:rgba(56,189,248,0.1);color:var(--accent);border:1px solid rgba(56,189,248,0.3)}
+    .feedback-stars{color:var(--accent-4);font-size:1rem}
+    .feedback-name{font-weight:700;color:var(--text);margin-bottom:.5rem}
+    .feedback-text{font-size:.9rem;color:var(--muted);line-height:1.6;font-style:italic;word-break:break-word}
 
-.about-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.about-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  padding: .5rem 1.25rem;
-  border-radius: 999px;
-  margin-bottom: 1.25rem;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(99, 102, 241, 0.15));
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  color: var(--accent);
-}
-
-.about-badge svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--accent);
-}
-
-.about-desc {
-  font-size: 1.1rem;
-  color: var(--muted);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-
-.about-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-soft);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-  overflow: hidden;
-  min-height: 360px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border-subtle);
-  text-align: left;
-}
-
-/* Card hover effects */
-.about-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-  border-color: var(--accent);
-}
-
-/* Uniform solid blue for dark theme */
-    html[data-theme="dark"] .about-card {
-      background: #1e3a5f;
+    @media(max-width:768px){
+      .carousel-track{gap:0}
+      .gallery-item{min-width:100%;height:200px}
+      .feedback-card{min-width:100%; padding: 1rem;}
+      .feedback-header{flex-direction: column; gap: 0.5rem;}
+      .feedback-avatar{font-size: 2rem;}
+      .feedback-text{font-size: 0.85rem;}
     }
 
-/* Uniform solid blue for light theme */
-html[data-theme="light"] .about-card {
-  background: #2563eb;
-  border-color: transparent;
-}
+    /* Carousel Navigation */
+    .carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--border-subtle);color:var(--text);font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s ease;z-index:10}
+    .carousel-nav:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .carousel-prev{left:10px}
+    .carousel-next{right:10px}
+    .carousel-indicators{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
+    .carousel-indicator{width:10px;height:10px;border-radius:50%;background:var(--border-subtle);border:none;cursor:pointer;transition:all .2s ease}
+    .carousel-indicator.active{background:var(--accent);transform:scale(1.2)}
+    .carousel-indicator:hover{background:var(--accent)}
 
-.about-card-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  position: relative;
-  overflow: hidden;
-}
-
-html[data-theme="dark"] .about-card-icon {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.2));
-  border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-html[data-theme="light"] .about-card-icon {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.about-card-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke-width: 2;
-  position: relative;
-  z-index: 2;
-}
-
-html[data-theme="dark"] .about-card-icon svg {
-  stroke: #FFD700;
-}
-
-html[data-theme="light"] .about-card-icon svg {
-  stroke: #fff;
-}
-
-/* Icon shine effect */
-.about-card-icon::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.3) 50%, transparent 60%);
-  transform: rotate(45deg);
-  animation: iconShine 3s infinite;
-}
-
-@keyframes iconShine {
-  0% {
-    transform: translateX(-100%) rotate(45deg);
-  }
-  100% {
-    transform: translateX(100%) rotate(45deg);
-  }
-}
-
-    .about-card h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: #fff;
-    }
-
-    .about-card p {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .about-card .tagline {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      padding: 0.35rem 0.8rem;
-      border-radius: 999px;
-      margin-bottom: 1.25rem;
-      color: #fff;
-    }
-
-    html[data-theme="dark"] .about-card .tagline {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-    }
-
-    html[data-theme="light"] .about-card .tagline {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .about-features {
-      list-style: none;
-      margin-top: auto;
-      margin-bottom: 0;
-    }
-
-    .about-features li {
-      position: relative;
-      padding-left: 1.25rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .about-features li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: #fff;
-    }
-
-/* Animation refinements */
-.about-card {
-  animation: cardSlideIn .7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
-  transform-origin: bottom center;
-}
-
-@keyframes cardSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(50px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Responsive improvements */
-@media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.25rem;
-  }
-  
-  .about-header {
-    margin-bottom: 2rem;
-  }
-  
-  .about-card {
-    padding: 1.75rem;
-    min-height: 340px;
-  }
-  
-  .about-card-icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 1rem;
-  }
-  
-  .about-card-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-}
-
-@media (max-width: 600px) {
-  .about-section {
-    padding: 4rem 0;
-  }
-  
-  .about-card {
-    padding: 1.5rem;
-    min-height: 320px;
-  }
-  
-  .about-card h3 {
-    font-size: 1.2rem;
-  }
-  
-  .about-card p {
-    font-size: 0.9rem;
-  }
-  
-  .about-features li {
-    font-size: 0.85rem;
-  }
-  
-  .about-desc {
-    font-size: 0.95rem;
-  }
-}
-
-/* Center alignment for mobile view */
-@media (max-width: 900px) {
-  .about-card {
-    text-align: center;
-  }
-  
-  .about-card-icon {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .about-features {
-    text-align: left;
-  }
-  
-  .about-features li {
-    display: inline-block;
-    text-align: left;
-  }
-}
+    #gallery,#feedback{background:radial-gradient(1200px 400px at top,rgba(99,102,241,.12),transparent 70%)}
   </style>
 </head>
 <body id="home">
@@ -874,13 +509,13 @@ html[data-theme="light"] .about-card-icon svg {
       </a>
       <nav class="nav-links" id="primary-nav">
         <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About Us</a>
         <a href="#expertise" class="nav-link">Our Expertise</a>
         <a href="#schedule" class="nav-link">Schedule</a>
-        <a href="#about" class="nav-link">About Us</a>
-        <a href="#" class="nav-link" onclick="openModal()">Register Now!</a>
-        <a href="#" class="nav-link" onclick="openLocationModal()">Our Location</a>
-        <a href="#" class="nav-link" onclick="openOnlineClassesModal()">Online Classes</a>
+        <span class="nav-link" onclick="openModal()">Register Now!</span>
+        <span class="nav-link" onclick="openLocationModal()">Our Location</span>
         <a href="#contact" class="nav-link">Contact Us</a>
+        <span class="nav-link" onclick="openOnlineClassesModal()">Online Classes</span>
       </nav>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -944,78 +579,78 @@ html[data-theme="light"] .about-card-icon svg {
           <div class="scroll-dot"></div>
         </div>
       </div>
-
-      </div>
-
     </section>
 
-    <section id="about" class="about-section reveal">
-  <div class="container">
-    <div class="about-header text-center reveal">
-      <div class="about-badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> About Upashiksha</div>
-      <h2 class="section-title">Shaping <span class="gradient-text">Future Leaders</span> Through Excellence</h2>
-      <p class="about-desc">Upashiksha Academy is built on a foundation of concept clarity, confidence building, and personalized education—making premium learning accessible to every student.</p>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-card reveal-stagger">
-        <div class="about-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-header reveal">
+          <div class="about-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            About Upashiksha
+          </div>
+          <h2 class="section-title">Shaping <span class="gradient-text">Future Leaders</span> Through Excellence</h2>
+          <p class="about-desc">Upashiksha Academy is built on a foundation of concept clarity, confidence building, and personalized education—making premium learning accessible to every student.</p>
         </div>
-        <h3>Concepts Before Curriculum</h3>
-        <p>We focus on deep conceptual clarity, mentoring students to think critically rather than memorize answers, so they stay confident inside and outside examinations.</p>
-        <div class="tagline">Concept</div>
-        <ul class="about-features">
-          <li>Foundation-first approach to learning</li>
-          <li>Intuitive concept explanations</li>
-          <li>Real-world application focus</li>
-        </ul>
-      </div>
 
-      <div class="about-card reveal-stagger">
-        <div class="about-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10h-10V2z"></path><path d="M12 12l8.5 8.5"></path><path d="M12 12l-8.5 8.5"></path></svg>
-        </div>
-        <h3>Growth Culture</h3>
-        <p>Mentors coach with empathy, emphasizing resilience, curiosity and regular mental refreshers to build a positive learning mindset. Promoting growth culture</p>
-        <div class="tagline">Mindset</div>
-        <ul class="about-features">
-          <li>Resilience training & positive reinforcement</li>
-          <li>Curiosity-driven exploration</li>
-          <li>Mental well-being support</li>
-        </ul>
-      </div>
+        <div class="about-grid">
+          <div class="about-card reveal-stagger">
+            <div class="about-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+            </div>
+            <h3>Concepts Before Curriculum</h3>
+            <p>We focus on deep conceptual clarity, mentoring students to think critically rather than memorize answers, building confidence and intellect.</p>
+            <div class="tagline">Concept</div>
+            <ul class="about-features">
+              <li>Foundation-first approach</li>
+              <li>Intuitive explanations</li>
+              <li>Real-world application</li>
+            </ul>
+          </div>
 
-      <div class="about-card reveal-stagger">
-        <div class="about-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m18 17-2-2-4 4-3-3-2 2"></path><path d="M18 9 l-2 2-4-4-3 3-2-2"></path></svg>
-        </div>
-        <h3>Analytics & Action</h3>
-        <p>Weekly tests + feedback keep progress measurable, actionable and motivating with personalized improvement plans & Individual attention</p>
-        <div class="tagline">Precision</div>
-        <ul class="about-features">
-          <li>Detailed performance analytics</li>
-          <li>Visual progress tracking</li>
-          <li>Targeted improvement strategies</li>
-        </ul>
-      </div>
+          <div class="about-card reveal-stagger">
+            <div class="about-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10h-10V2z"></path></svg>
+            </div>
+            <h3>Growth Culture</h3>
+            <p>Mentors coach with empathy, resilience, curiosity and regular mental refreshers. Promoting growth academically</p>
+            <div class="tagline">Mindset</div>
+            <ul class="about-features">
+              <li>Resilience training</li>
+              <li>Curiosity-driven exploration</li>
+              <li>Mental well-being support</li>
+            </ul>
+          </div>
 
-      <div class="about-card reveal-stagger">
-        <div class="about-card-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+          <div class="about-card reveal-stagger">
+            <div class="about-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m18 17-2-2-4 4-3-3-2 2"></path></svg>
+            </div>
+            <h3>Analytics & Action</h3>
+            <p>Weekly tests + feedback keep progress measurable, actionable and motivating. Analysing each student's progress</p>
+            <div class="tagline">Precision</div>
+            <ul class="about-features">
+              <li>Performance analytics</li>
+              <li>Visual progress tracking</li>
+              <li>Targeted strategies</li>
+            </ul>
+          </div>
+
+          <div class="about-card reveal-stagger">
+            <div class="about-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+            </div>
+            <h3>Future Ready</h3>
+            <p>Discipline, problem solving, and future-stream counselling</p>
+            <div class="tagline">Beyond</div>
+            <ul class="about-features">
+              <li>Career path guidance</li>
+              <li>Life skills development</li>
+              <li>Stream selection support</li>
+            </ul>
+          </div>
         </div>
-        <h3>Future Ready</h3>
-        <p>Discipline, problem solving, and future-stream counselling ensure every student is prepared not just for exams but for life.</p>
-        <div class="tagline">Beyond</div>
-        <ul class="about-features">
-          <li>Career path guidance</li>
-          <li>Life skills development</li>
-          <li>Stream selection support</li>
-        </ul>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section id="believe" class="motto-panel motto-panel--believe">
       <div class="motto-particles"><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div><div class="motto-particle"></div></div>
@@ -1091,7 +726,7 @@ html[data-theme="light"] .about-card-icon svg {
           <div class="expertise-card expertise-card--foundation reveal-stagger">
             <div class="expertise-card-icon">📚</div>
             <span class="expertise-card-label">Foundation</span>
-            <h3 class="expertise-card-title">Classes III – IX</h3>
+            <h3 class="expertise-card-title">Classes III – IX | ICSE · CBSE · State · IB · IGCSE</h3>
             <p class="expertise-card-subtitle">Building strong fundamentals with engaging methods.</p>
             <div class="expertise-card-subjects">
               <span class="subject-tag">📐 Mathematics</span>
@@ -1103,7 +738,7 @@ html[data-theme="light"] .about-card-icon svg {
           <div class="expertise-card expertise-card--board reveal-stagger">
             <div class="expertise-card-icon">🏆</div>
             <span class="expertise-card-label">Board Excellence</span>
-            <h3 class="expertise-card-title">Class X | ICSE · CBSE · State</h3>
+            <h3 class="expertise-card-title">Class X | ICSE · CBSE · State · IB · IGCSE</h3>
             <p class="expertise-card-subtitle">Intensive board exam preparation.</p>
             <div class="expertise-card-subjects">
               <span class="subject-tag">📐 Mathematics</span>
@@ -1126,7 +761,7 @@ html[data-theme="light"] .about-card-icon svg {
           <div class="expertise-card expertise-card--home reveal-stagger">
             <div class="expertise-card-icon">🏠</div>
             <span class="expertise-card-label">Home Tuition</span>
-            <h3 class="expertise-card-title">Classes V – XII</h3>
+            <h3 class="expertise-card-title">Classes V – XII| ICSE · CBSE · State · IB · IGCSE</h3>
             <p class="expertise-card-subtitle">One-on-one coaching at your doorstep.</p>
             <div class="expertise-card-subjects">
               <span class="subject-tag">📐 Mathematics</span>
@@ -1181,6 +816,26 @@ html[data-theme="light"] .about-card-icon svg {
       </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="content-section" id="gallery">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Our Learning Moments</h2>
+          <p class="section-desc">A glimpse into classrooms & student journeys</p>
+        </div>
+        <div class="carousel-wrapper" id="galleryCarousel">
+          <div class="carousel-track" id="galleryTrack">
+            <div class="gallery-item"><img src="GALLERY/1.jpg" alt="Gallery Image 1" style="width:100%; height:100%; object-fit:cover; border-radius:20px;"></div>
+            <div class="gallery-item"><img src="GALLERY/2.jpg" alt="Gallery Image 2" style="width:100%; height:100%; object-fit:cover; border-radius:20px;"></div>
+            <div class="gallery-item"><img src="GALLERY/3.jpg" alt="Gallery Image 3" style="width:100%; height:100%; object-fit:cover; border-radius:20px;"></div>
+            <div class="gallery-item"><img src="GALLERY/4.jpg" alt="Gallery Image 4" style="width:100%; height:100%; object-fit:cover; border-radius:20px;"></div>
+            <div class="gallery-item"><img src="GALLERY/5.jpg" alt="Gallery Image 5" style="width:100%; height:100%; object-fit:cover; border-radius:20px;"></div>
+            <div class="gallery-item"><img src="GALLERY/6.jpg" alt="Gallery Image 6" style="width:100%; height:100%; object-fit:cover; border-radius:20px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="container">
         <div class="section-header reveal">
@@ -1188,19 +843,19 @@ html[data-theme="light"] .about-card-icon svg {
           <p class="section-desc">Reach out using your preferred platform.</p>
         </div>
         <div class="contact-cards">
-          <a class="contact-card reveal" href="tel:+919876543210">
+          <a class="contact-card reveal" href="tel:+917259503031">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div class="contact-text"><span class="contact-title">Phone</span><span class="contact-note">Tap to call</span></div>
           </a>
-          <a class="contact-card reveal" href="mailto:info@upashiksha.com">
+          <a class="contact-card reveal" href="https://mail.google.com/mail/?view=cm&fs=1&to=upashiksha@gmail.com" target="_blank">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
             <div class="contact-text"><span class="contact-title">Email</span><span class="contact-note">Send us queries</span></div>
           </a>
-          <a class="contact-card reveal" href="https://instagram.com/upashiksha" target="_blank">
+          <a class="contact-card reveal" href="https://www.instagram.com/upashiksha_academy?igsh=MWU4N2p1aHpoeW00dg==" target="_blank">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
             <div class="contact-text"><span class="contact-title">Instagram</span><span class="contact-note">Results & updates</span></div>
           </a>
-          <a class="contact-card reveal" href="https://wa.me/919876543210" target="_blank">
+          <a class="contact-card reveal" href="https://wa.me/917259503031" target="_blank">
             <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></div>
             <div class="contact-text"><span class="contact-title">WhatsApp</span><span class="contact-note">Chat with us</span></div>
           </a>
@@ -1219,23 +874,19 @@ html[data-theme="light"] .about-card-icon svg {
           <h2 class="form-title">Our Location</h2>
           <p class="form-subtitle">Find us at the heart of academic excellence.</p>
         </div>
-        <div class="form-grid">
-          <div class="form-group full-width">
-            <div style="text-align: center; padding: 2rem;">
-              <h3 style="color: var(--form-text-bold); margin-bottom: 1rem;">Upashiksha Academy</h3>
-              <p style="color: var(--muted); margin-bottom: 1rem; line-height: 1.6;">
-                123 Education Street<br>
-                Knowledge City, Karnataka 560001<br>
-                India
-              </p>
-              <p style="color: var(--muted); margin-bottom: 1rem;">
-                <strong>Phone:</strong> +91 98765 43210<br>
-                <strong>Email:</strong> info@upashiksha.com
-              </p>
-              <div style="margin-top: 2rem;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0x94e561e91c8c9b0!2sBangalore%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin" width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe>
-              </div>
-            </div>
+        <div style="text-align: center; padding: 2rem;">
+          <h3 style="color: var(--form-text-bold); margin-bottom: 1rem;">Upashiksha Academy</h3>
+          <p style="color: var(--muted); margin-bottom: 1rem; line-height: 1.6;">
+            123 Education Street<br>
+            Knowledge City, Karnataka 560001<br>
+            India
+          </p>
+          <p style="color: var(--muted); margin-bottom: 1rem;">
+            <strong>Phone:</strong> +91 7259503031<br>
+            <strong>Email:</strong> <a href="mailto:upashiksha@gmail.com" style="color: var(--accent);">upashiksha@gmail.com</a>
+          </p>
+          <div style="margin-top: 2rem;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0x94e561e91c8c9b0!2sBangalore%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin" width="100%" height="300" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
       </div>
@@ -1252,32 +903,15 @@ html[data-theme="light"] .about-card-icon svg {
           <h2 class="form-title">Coming Soon!</h2>
           <p class="form-subtitle">Online Classes Platform</p>
         </div>
-        <div class="form-grid">
-          <div class="form-group full-width">
-            <div style="text-align: center; padding: 2rem;">
-              <h3 style="color: var(--form-text-bold); margin-bottom: 1rem;">Exciting Updates Ahead!</h3>
-              <p style="color: var(--muted); margin-bottom: 1rem; line-height: 1.6;">
-                Our team, teachers, and tech experts are working tirelessly to bring you an exceptional online learning experience. Stay tuned for interactive classes, personalized dashboards, and seamless access to quality education from anywhere.
-              </p>
-              <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
-                  <line x1="16" y1="2" x2="16" y2="6"/>
-                  <line x1="8" y1="2" x2="8" y2="6"/>
-                  <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
-                  <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
-                  <path d="M10 9H8"/>
-                  <path d="M16 13H8"/>
-                  <path d="M16 17H8"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                </svg>
-              </div>
-            </div>
+        <div style="text-align: center; padding: 2rem;">
+          <h3 style="color: var(--form-text-bold); margin-bottom: 1rem;">Exciting Updates Ahead!</h3>
+          <p style="color: var(--muted); margin-bottom: 1rem; line-height: 1.6;">
+            Our team, teachers, and tech experts are working tirelessly to bring you an exceptional online learning experience. Stay tuned!
+          </p>
+          <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-2)" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-3)" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           </div>
         </div>
       </div>
@@ -1297,115 +931,97 @@ html[data-theme="light"] .about-card-icon svg {
         <form id="regForm" class="form-grid">
           <div class="form-group">
             <label class="form-label" for="studentName">Student Name <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <input type="text" id="studentName" class="form-input" placeholder="Enter student's full name" required>
-            </div>
+            <input type="text" id="studentName" class="form-input" placeholder="Enter student's full name" required>
             <div class="error-message" id="studentNameErr"></div>
           </div>
           <div class="form-group">
+            <label class="form-label" for="studentDob">Student Date of Birth <span class="required">*</span></label>
+            <input type="date" id="studentDob" class="form-input" required>
+            <div class="error-message" id="studentDobErr"></div>
+          </div>          
+          <div class="form-group">
             <label class="form-label" for="parentName">Parent Name <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <input type="text" id="parentName" class="form-input" placeholder="Enter parent's full name" required>
-            </div>
+            <input type="text" id="parentName" class="form-input" placeholder="Enter parent's full name" required>
             <div class="error-message" id="parentNameErr"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="parentPhone">Parent Phone <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <input type="tel" id="parentPhone" class="form-input" placeholder="+91 9876543210" required>
-            </div>
+            <input type="tel" id="parentPhone" class="form-input" placeholder="+91 9876543210" required>
             <div class="error-message" id="parentPhoneErr"></div>
           </div>
-          <div class="form-group" id="studentPhoneGroup" style="display: none;">
+          <div class="form-group hidden" id="studentPhoneGroup">
             <label class="form-label" for="studentPhone">Student Phone</label>
-            <div class="input-wrapper">
-              <input type="tel" id="studentPhone" class="form-input" placeholder="+91 9876543210">
-            </div>
+            <input type="tel" id="studentPhone" class="form-input" placeholder="+91 9876543210">
             <div class="error-message" id="studentPhoneErr"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="studentEmail">Student Email <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <input type="email" id="studentEmail" class="form-input" placeholder="student@example.com" required>
-            </div>
+            <input type="email" id="studentEmail" class="form-input" placeholder="student@example.com" required>
             <div class="error-message" id="studentEmailErr"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="parentEmail">Parent Email <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <input type="email" id="parentEmail" class="form-input" placeholder="parent@example.com" required>
-            </div>
+            <input type="email" id="parentEmail" class="form-input" placeholder="parent@example.com" required>
             <div class="error-message" id="parentEmailErr"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="schoolName">School Name <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <input type="text" id="schoolName" class="form-input" placeholder="Enter school name" required>
-            </div>
+            <input type="text" id="schoolName" class="form-input" placeholder="Enter school name" required>
             <div class="error-message" id="schoolNameErr"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="classStudying">Class Studying <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <select id="classStudying" class="form-select" required>
-                <option value="">Select Class</option>
-                <option value="III">III</option>
-                <option value="IV">IV</option>
-                <option value="V">V</option>
-                <option value="VI">VI</option>
-                <option value="VII">VII</option>
-                <option value="VIII">VIII</option>
-                <option value="IX">IX</option>
-                <option value="X">X</option>
-                <option value="XI">XI</option>
-                <option value="XII">XII</option>
-              </select>
-            </div>
+            <select id="classStudying" class="form-select" required>
+              <option value="">Select Class</option>
+              <option value="III">III</option>
+              <option value="IV">IV</option>
+              <option value="V">V</option>
+              <option value="VI">VI</option>
+              <option value="VII">VII</option>
+              <option value="VIII">VIII</option>
+              <option value="IX">IX</option>
+              <option value="X">X</option>
+              <option value="XI">XI</option>
+              <option value="XII">XII</option>
+            </select>
             <div class="error-message" id="classStudyingErr"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="coachingType">Coaching Type <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <select id="coachingType" class="form-select" required>
-                <option value="">Select Type</option>
-                <option value="academy">Academy</option>
-                <option value="home">Home Tuition</option>
-              </select>
-            </div>
+            <select id="coachingType" class="form-select" required>
+              <option value="">Select Type</option>
+              <option value="academy">Academy</option>
+              <option value="home">Home Tuition</option>
+            </select>
             <div class="error-message" id="coachingTypeErr"></div>
           </div>
           <div class="form-group">
             <label class="form-label" for="syllabus">Syllabus <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <select id="syllabus" class="form-select" required>
-                <option value="">Select Syllabus</option>
-                <option value="cbse">CBSE</option>
-                <option value="icse">ICSE</option>
-                <option value="state">State Board</option>
-                <option value="ib">IB</option>
-              </select>
-            </div>
+            <select id="syllabus" class="form-select" required>
+              <option value="">Select Syllabus</option>
+              <option value="cbse">CBSE</option>
+              <option value="icse">ICSE</option>
+              <option value="state">State Board</option>
+              <option value="ib">IB</option>
+              <option value="igcse">IGCSE</option>
+            </select>
             <div class="error-message" id="syllabusErr"></div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="subject">Subject <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <select id="subject" class="form-select" required>
-                <option value="">Select Subject</option>
-              </select>
+          <div class="form-group full-width">
+            <label class="form-label">Subjects Interested <span class="required">*</span></label>
+            <div class="subject-checkbox-group" id="subjectGroup">
+              <p style="color: var(--muted); font-size: 0.85rem;">Please select a class first</p>
             </div>
-            <div class="error-message" id="subjectErr"></div>
+            <div class="error-message" id="subjectErr">Please select at least one subject</div>
           </div>
-          <div class="form-group">
+          <div class="form-group full-width">
             <label class="form-label" for="slot">Preferred Slot <span class="required">*</span></label>
-            <div class="input-wrapper">
-              <select id="slot" class="form-select" required>
-                <option value="">Select Slot</option>
-                <option value="morning">Morning (5:45 AM - 7:15 AM)</option>
-                <option value="evening">Evening (5:30 PM - 7:00 PM)</option>
-                <option value="home">Home Tuition (Flexible)</option>
-              </select>
-            </div>
+            <select id="slot" class="form-select" required>
+              <option value="">Select Slot</option>
+              <option value="morning">Morning (5:45 AM - 7:15 AM)</option>
+              <option value="evening">Evening (5:30 PM - 7:00 PM)</option>
+              <option value="home">Home Tuition (Flexible)</option>
+            </select>
             <div class="error-message" id="slotErr"></div>
           </div>
           <div class="form-submit-container">
@@ -1431,7 +1047,7 @@ html[data-theme="light"] .about-card-icon svg {
   </footer>
 
   <script>
-    // Initial scroll reset execution (moved for strict control)
+    // Initial scroll reset
     (function() {
       window.history.scrollRestoration = 'manual';
       window.scrollTo(0, 0);
@@ -1441,239 +1057,419 @@ html[data-theme="light"] .about-card-icon svg {
     })();
 
     // Mobile nav
-    const navToggle=document.getElementById('nav-toggle');
-    navToggle.addEventListener('click',()=>{
+    const navToggle = document.getElementById('nav-toggle');
+    navToggle.addEventListener('click', () => {
       navToggle.classList.toggle('is-open');
       document.body.classList.toggle('nav-open');
     });
-    document.getElementById('primary-nav').addEventListener('click',e=>{
-      if(e.target.classList.contains('nav-link')){
+    document.getElementById('primary-nav').addEventListener('click', e => {
+      if (e.target.classList.contains('nav-link')) {
         document.body.classList.remove('nav-open');
         navToggle.classList.remove('is-open');
       }
     });
 
     // Theme toggle
-    const root=document.documentElement;
-    const saved=localStorage.getItem('theme');
-    if(saved)root.setAttribute('data-theme',saved);
-    else root.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-    document.getElementById('theme-toggle').addEventListener('click',()=>{
-      const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
-      root.setAttribute('data-theme',next);
-      localStorage.setItem('theme',next);
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.setAttribute('data-theme', window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
     });
 
     // Reveal animations
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target);}});
-    },{threshold:0.15});
-    document.querySelectorAll('.reveal,.reveal-stagger,.motto-panel').forEach(el=>observer.observe(el));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal,.reveal-stagger,.motto-panel').forEach(el => observer.observe(el));
 
     // Footer year
-    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Modal functions
-    const modal=document.getElementById('modal');
-    const locationModal=document.getElementById('locationModal');
-    function openModal(){
+    const modal = document.getElementById('modal');
+    const locationModal = document.getElementById('locationModal');
+    const onlineClassesModal = document.getElementById('onlineClassesModal');
+
+    function openModal() {
       modal.classList.add('is-active');
-      document.body.style.overflow='hidden';
-      // Reset animations
-      document.querySelectorAll('.form-group, .form-divider, .form-section-title, .form-submit-container').forEach((el,i)=>{
-        el.style.animation='none';
-        el.offsetHeight; // Trigger reflow
-        el.style.animation='';
-      });
+      document.body.style.overflow = 'hidden';
     }
-    function closeModal(){modal.classList.remove('is-active');document.body.style.overflow='';}
-    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+    function closeModal() {
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
-    function openLocationModal(){
+    function openLocationModal() {
       locationModal.classList.add('is-active');
-      document.body.style.overflow='hidden';
+      document.body.style.overflow = 'hidden';
     }
-    function closeLocationModal(){locationModal.classList.remove('is-active');document.body.style.overflow='';}
-    locationModal.addEventListener('click',e=>{if(e.target===locationModal)closeLocationModal();});
+    function closeLocationModal() {
+      locationModal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+    locationModal.addEventListener('click', e => { if (e.target === locationModal) closeLocationModal(); });
 
-    const onlineClassesModal=document.getElementById('onlineClassesModal');
-    function openOnlineClassesModal(){
+    function openOnlineClassesModal() {
       onlineClassesModal.classList.add('is-active');
-      document.body.style.overflow='hidden';
+      document.body.style.overflow = 'hidden';
     }
-    function closeOnlineClassesModal(){onlineClassesModal.classList.remove('is-active');document.body.style.overflow='';}
-    onlineClassesModal.addEventListener('click',e=>{if(e.target===onlineClassesModal)closeOnlineClassesModal();});
+    function closeOnlineClassesModal() {
+      onlineClassesModal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+    onlineClassesModal.addEventListener('click', e => { if (e.target === onlineClassesModal) closeOnlineClassesModal(); });
 
     // Form logic
-    const form=document.getElementById('regForm');
-    const classSelect=document.getElementById('classStudying');
-    const coachingSelect=document.getElementById('coachingType');
-    const subjectSelect=document.getElementById('subject');
-    const studentPhoneGroup=document.getElementById('studentPhoneGroup');
+    const form = document.getElementById('regForm');
+    const classSelect = document.getElementById('classStudying');
+    const coachingSelect = document.getElementById('coachingType');
+    const subjectGroup = document.getElementById('subjectGroup');
+    const studentPhoneGroup = document.getElementById('studentPhoneGroup');
 
-    const subjectsMap={
-      foundation:['MATHEMATICS','SCIENCE','ENGLISH','SOCIAL STUDIES','ALL OF THE ABOVE'],
-      classX:['MATHEMATICS','PHYSICS','CHEMISTRY','BIOLOGY'],
-      puc:['MATHEMATICS','STATISTICS','ACCOUNTANCY'],
-      home:['MATHEMATICS']
+    const subjectsMap = {
+      foundation: ['MATHEMATICS', 'SCIENCE', 'ENGLISH', 'SOCIAL STUDIES'],
+      classX: ['MATHEMATICS', 'PHYSICS', 'CHEMISTRY', 'BIOLOGY'],
+      puc: ['MATHEMATICS', 'STATISTICS', 'ACCOUNTANCY'],
+      home: ['MATHEMATICS']
     };
 
-    function updateSubjects(){
-      const cls=classSelect.value;
-      const coaching=coachingSelect.value;
-      subjectSelect.innerHTML='<option value="">Select subject</option>';
-      
-      let subjects=[];
-      if(coaching==='home'){
-        subjects=subjectsMap.home;
-      }else if(['III','IV','V','VI','VII','VIII','IX'].includes(cls)){
-        subjects=subjectsMap.foundation;
-      }else if(cls==='X'){
-        subjects=subjectsMap.classX;
-      }else if(['XI','XII'].includes(cls)){
-        subjects=subjectsMap.puc;
+    function updateSubjects() {
+      const cls = classSelect.value;
+      const coaching = coachingSelect.value;
+      subjectGroup.innerHTML = '';
+
+      let subjects = [];
+      if (coaching === 'home') {
+        subjects = subjectsMap.home;
+      } else if (['III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'].includes(cls)) {
+        subjects = subjectsMap.foundation;
+      } else if (cls === 'X') {
+        subjects = subjectsMap.classX;
+      } else if (['XI', 'XII'].includes(cls)) {
+        subjects = subjectsMap.puc;
       }
-      
-      subjects.forEach(s=>{
-        const opt=document.createElement('option');
-        opt.value=s;opt.textContent=s;
-        subjectSelect.appendChild(opt);
-      });
-    }
 
-    function updateStudentPhone(){
-      const cls=classSelect.value;
-      if(['X','XI','XII'].includes(cls)){
-        studentPhoneGroup.classList.remove('hidden');
-        studentPhoneGroup.style.animation='formFieldIn .4s ease forwards';
-      }else{
-        studentPhoneGroup.classList.add('hidden');
-        document.getElementById('studentPhone').value='';
+      if (!subjects || subjects.length === 0) {
+        subjectGroup.innerHTML = '<p style="color: var(--muted); font-size: 0.85rem;">Please select a class first</p>';
+        return;
       }
-    }
 
-    classSelect.addEventListener('change',()=>{updateSubjects();updateStudentPhone();});
-    coachingSelect.addEventListener('change',updateSubjects);
+      subjects.forEach(s => {
+        const id = `subject_${s.replace(/\s+/g, '_').toLowerCase()}`;
+        const label = document.createElement('label');
+        label.className = 'subject-checkbox-item';
+        label.setAttribute('for', id);
 
-    // Focus/blur effects for labels
-    document.querySelectorAll('.form-input, .form-select').forEach(el=>{
-      el.addEventListener('focus',()=>{
-        el.closest('.form-group').classList.add('focused');
-      });
-      el.addEventListener('blur',()=>{
-        el.closest('.form-group').classList.remove('focused');
-      });
-      // Mark select as filled when changed
-      if(el.tagName==='SELECT'){
-        el.addEventListener('change',()=>{
-          if(el.value){
-            el.classList.add('filled');
-          }else{
-            el.classList.remove('filled');
-          }
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = id;
+        checkbox.name = 'subjects';
+        checkbox.value = s;
+
+        const span = document.createElement('span');
+        span.textContent = s;
+
+        label.appendChild(checkbox);
+        label.appendChild(span);
+        subjectGroup.appendChild(label);
+
+        checkbox.addEventListener('change', () => {
+          label.classList.toggle('selected', checkbox.checked);
+          clearError('subject');
         });
+      });
+    }
+
+    function updateStudentPhone() {
+      const cls = classSelect.value;
+      if (['X', 'XI', 'XII'].includes(cls)) {
+        studentPhoneGroup.classList.remove('hidden');
+      } else {
+        studentPhoneGroup.classList.add('hidden');
+        document.getElementById('studentPhone').value = '';
+      }
+    }
+
+    classSelect.addEventListener('change', () => { updateSubjects(); updateStudentPhone(); });
+    coachingSelect.addEventListener('change', updateSubjects);
+
+    // Focus/blur effects
+    document.querySelectorAll('.form-input, .form-select').forEach(el => {
+      el.addEventListener('focus', () => el.closest('.form-group').classList.add('focused'));
+      el.addEventListener('blur', () => el.closest('.form-group').classList.remove('focused'));
+      if (el.tagName === 'SELECT') {
+        el.addEventListener('change', () => el.classList.toggle('filled', !!el.value));
       }
     });
 
     // Validation helpers
-    function showError(id,msg){
-      const el=document.getElementById(id);
-      const err=document.getElementById(id+'Err');
-      el.classList.add('error');
-      err.textContent=msg;
-      err.classList.add('visible');
+    function showError(id, msg) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(id + 'Err');
+      if (el) el.classList.add('error');
+      if (err) { err.textContent = msg; err.classList.add('visible'); }
     }
-    function clearError(id){
-      const el=document.getElementById(id);
-      const err=document.getElementById(id+'Err');
-      if(el)el.classList.remove('error');
-      if(err){err.textContent='';err.classList.remove('visible');}
+    function clearError(id) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(id + 'Err');
+      if (el) el.classList.remove('error');
+      if (err) { err.textContent = ''; err.classList.remove('visible'); }
     }
-    function clearAllErrors(){
-      ['studentName','parentName','parentPhone','studentPhone','studentEmail','parentEmail','schoolName','classStudying','coachingType','syllabus','subject','slot'].forEach(clearError);
-    }
-
-    const phoneRegex=/^[+]?[\d\s-]{10,15}$/;
-    const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    function extractNameFromEmail(email){
-      const local=email.split('@')[0].toLowerCase();
-      return local.replace(/[^a-z]/g,'');
+    function clearAllErrors() {
+      ['studentName', 'studentDob', 'parentName', 'parentPhone', 'studentPhone', 'studentEmail', 'parentEmail', 'schoolName', 'classStudying', 'coachingType', 'syllabus', 'subject', 'slot'].forEach(clearError);
     }
 
-    form.addEventListener('submit',e=>{
+    const phoneRegex = /^[+]?[\d\s-]{10,15}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function extractNameFromEmail(email) {
+      const local = email.split('@')[0].toLowerCase();
+      return local.replace(/[^a-z]/g, '');
+    }
+
+    form.addEventListener('submit', e => {
       e.preventDefault();
       clearAllErrors();
-      let valid=true;
+      let valid = true;
 
-      const studentName=document.getElementById('studentName').value.trim();
-      const parentName=document.getElementById('parentName').value.trim();
-      const parentPhone=document.getElementById('parentPhone').value.trim();
-      const studentPhone=document.getElementById('studentPhone').value.trim();
-      const studentEmail=document.getElementById('studentEmail').value.trim();
-      const parentEmail=document.getElementById('parentEmail').value.trim();
-      const schoolName=document.getElementById('schoolName').value.trim();
-      const cls=classSelect.value;
-      const coaching=coachingSelect.value;
-      const syllabus=document.getElementById('syllabus').value;
-      const subject=subjectSelect.value;
-      const slot=document.getElementById('slot').value;
+      const studentName = document.getElementById('studentName').value.trim();
+      const studentDob = document.getElementById('studentDob').value;
+      const parentName = document.getElementById('parentName').value.trim();
+      const parentPhone = document.getElementById('parentPhone').value.trim();
+      const studentPhone = document.getElementById('studentPhone').value.trim();
+      const studentEmail = document.getElementById('studentEmail').value.trim();
+      const parentEmail = document.getElementById('parentEmail').value.trim();
+      const schoolName = document.getElementById('schoolName').value.trim();
+      const cls = classSelect.value;
+      const coaching = coachingSelect.value;
+      const syllabusVal = document.getElementById('syllabus').value;
+      const subjects = Array.from(document.querySelectorAll('input[name="subjects"]:checked')).map(cb => cb.value);
+      const slotVal = document.getElementById('slot').value;
 
-      // Required field validation
-      if(!studentName){showError('studentName','Student name is required');valid=false;}
-      if(!parentName){showError('parentName','Parent name is required');valid=false;}
-      if(!parentPhone){showError('parentPhone','Parent phone is required');valid=false;}
-      else if(!phoneRegex.test(parentPhone)){showError('parentPhone','Invalid phone number');valid=false;}
-      if(!studentEmail){showError('studentEmail','Student email is required');valid=false;}
-      else if(!emailRegex.test(studentEmail)){showError('studentEmail','Invalid email format');valid=false;}
-      if(!parentEmail){showError('parentEmail','Parent email is required');valid=false;}
-      else if(!emailRegex.test(parentEmail)){showError('parentEmail','Invalid email format');valid=false;}
-      if(!schoolName){showError('schoolName','School name is required');valid=false;}
-      if(!cls){showError('classStudying','Please select a grade');valid=false;}
-      if(!coaching){showError('coachingType','Please select coaching type');valid=false;}
-      if(!syllabus){showError('syllabus','Please select syllabus');valid=false;}
-      if(!subject){showError('subject','Please select a subject');valid=false;}
-      if(!slot){showError('slot','Please select a time slot');valid=false;}
+      if (!studentName) { showError('studentName', 'Student name is required'); valid = false; }
+      if (!studentDob) { showError('studentDob', 'Date of birth is required'); valid = false; }
+      if (!parentName) { showError('parentName', 'Parent name is required'); valid = false; }
+      if (!parentPhone) { showError('parentPhone', 'Parent phone is required'); valid = false; }
+      else if (!phoneRegex.test(parentPhone)) { showError('parentPhone', 'Invalid phone number'); valid = false; }
+      if (!studentEmail) { showError('studentEmail', 'Student email is required'); valid = false; }
+      else if (!emailRegex.test(studentEmail)) { showError('studentEmail', 'Invalid email format'); valid = false; }
+      if (!parentEmail) { showError('parentEmail', 'Parent email is required'); valid = false; }
+      else if (!emailRegex.test(parentEmail)) { showError('parentEmail', 'Invalid email format'); valid = false; }
+      if (!schoolName) { showError('schoolName', 'School name is required'); valid = false; }
+      if (!cls) { showError('classStudying', 'Please select a grade'); valid = false; }
+      if (!coaching) { showError('coachingType', 'Please select coaching type'); valid = false; }
+      if (!syllabusVal) { showError('syllabus', 'Please select syllabus'); valid = false; }
+      if (subjects.length === 0) { showError('subject', 'Please select at least one subject'); valid = false; }
+      if (!slotVal) { showError('slot', 'Please select a time slot'); valid = false; }
 
-      // Email match validation
-      if(studentEmail&&parentEmail&&studentEmail.toLowerCase()===parentEmail.toLowerCase()){
-        showError('parentEmail','Please enter parent\'s email correctly');valid=false;
+      if (studentEmail && parentEmail && studentEmail.toLowerCase() === parentEmail.toLowerCase()) {
+        showError('parentEmail', 'Please enter parent\'s email correctly');
+        valid = false;
       }
 
-      // Check if student name appears in parent email
-      if(studentName&&parentEmail){
-        const nameParts=studentName.toLowerCase().split(/\s+/);
-        const parentEmailLocal=extractNameFromEmail(parentEmail);
-        const nameInParentEmail=nameParts.some(part=>part.length>2&&parentEmailLocal.includes(part));
-        if(nameInParentEmail){
-          showError('parentEmail','Please enter parent\'s email correctly');valid=false;
+      if (studentName && parentEmail) {
+        const nameParts = studentName.toLowerCase().split(/\s+/);
+        const parentEmailLocal = extractNameFromEmail(parentEmail);
+        const nameInParentEmail = nameParts.some(part => part.length > 2 && parentEmailLocal.includes(part));
+        if (nameInParentEmail) {
+          showError('parentEmail', 'Please enter parent\'s email correctly');
+          valid = false;
         }
       }
 
-      // Phone match validation (if student phone visible)
-      if(!studentPhoneGroup.classList.contains('hidden')&&studentPhone){
-        if(!phoneRegex.test(studentPhone)){showError('studentPhone','Invalid phone number');valid=false;}
-        else if(studentPhone.replace(/\D/g,'')===parentPhone.replace(/\D/g,'')){
-          showError('studentPhone','Student and parent phone cannot be the same');valid=false;
+      if (!studentPhoneGroup.classList.contains('hidden') && studentPhone) {
+        if (!phoneRegex.test(studentPhone)) { showError('studentPhone', 'Invalid phone number'); valid = false; }
+        else if (studentPhone.replace(/\D/g, '') === parentPhone.replace(/\D/g, '')) {
+          showError('studentPhone', 'Student and parent phone cannot be the same');
+          valid = false;
         }
       }
 
-      if(valid){
+      if (valid) {
         alert('Registration submitted successfully! We will contact you soon.');
         form.reset();
-        subjectSelect.innerHTML='<option value="">Select grade first</option>';
+        subjectGroup.innerHTML = '<p style="color: var(--muted); font-size: 0.85rem;">Please select a class first</p>';
         studentPhoneGroup.classList.add('hidden');
-        document.querySelectorAll('.form-select').forEach(el=>el.classList.remove('filled'));
+        document.querySelectorAll('.form-select').forEach(el => el.classList.remove('filled'));
         closeModal();
       }
     });
 
-    // Real-time validation feedback
-    document.querySelectorAll('.form-input,.form-select').forEach(el=>{
-      el.addEventListener('input',()=>clearError(el.id));
-      el.addEventListener('change',()=>clearError(el.id));
+    document.querySelectorAll('.form-input,.form-select').forEach(el => {
+      el.addEventListener('input', () => clearError(el.id));
+      el.addEventListener('change', () => clearError(el.id));
+    });
+
+    // Carousel Class
+    class PremiumCarousel {
+      constructor(containerId, itemWidth = 340, autoSlide = true, interval = 4000) {
+        this.container = document.getElementById(containerId);
+        if (!this.container) return;
+
+        this.track = this.container.querySelector('.carousel-track');
+        this.items = Array.from(this.track.children);
+        if (this.items.length === 0) return;
+
+        this.itemWidth = itemWidth;
+        this.currentIndex = 0;
+        this.autoSlide = autoSlide;
+        this.interval = interval;
+        this.autoSlideTimer = null;
+
+        this.init();
+      }
+
+      init() {
+        this.createNavigation();
+        this.updatePosition();
+        this.addEventListeners();
+        if (this.autoSlide) this.startAutoSlide();
+        this.updateIndicators();
+      }
+
+      createNavigation() {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'carousel-nav carousel-prev';
+        prevBtn.innerHTML = '‹';
+        prevBtn.setAttribute('aria-label', 'Previous');
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'carousel-nav carousel-next';
+        nextBtn.innerHTML = '›';
+        nextBtn.setAttribute('aria-label', 'Next');
+
+        const indicators = document.createElement('div');
+        indicators.className = 'carousel-indicators';
+
+        this.items.forEach((_, index) => {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-indicator';
+          dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+          indicators.appendChild(dot);
+        });
+
+        this.container.appendChild(prevBtn);
+        this.container.appendChild(nextBtn);
+        this.container.appendChild(indicators);
+
+        this.prevBtn = prevBtn;
+        this.nextBtn = nextBtn;
+        this.indicators = indicators;
+      }
+
+      addEventListeners() {
+        this.prevBtn.addEventListener('click', () => this.prev());
+        this.nextBtn.addEventListener('click', () => this.next());
+
+        this.indicators.querySelectorAll('.carousel-indicator').forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goTo(index));
+        });
+
+        this.container.addEventListener('mouseenter', () => this.pauseAutoSlide());
+        this.container.addEventListener('mouseleave', () => this.resumeAutoSlide());
+      }
+
+      updatePosition() {
+        const gap = window.innerWidth > 768 ? 20 : 0;
+        const itemWidth = this.items[0].getBoundingClientRect().width + gap;
+        this.track.style.transform = `translateX(-${this.currentIndex * itemWidth}px)`;
+      }
+
+      updateIndicators() {
+        const dots = this.indicators.querySelectorAll('.carousel-indicator');
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === this.currentIndex);
+        });
+      }
+
+      prev() {
+        this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.items.length - 1;
+        this.updatePosition();
+        this.updateIndicators();
+        this.resetAutoSlide();
+      }
+
+      next() {
+        this.currentIndex = (this.currentIndex + 1) % this.items.length;
+        this.updatePosition();
+        this.updateIndicators();
+        this.resetAutoSlide();
+      }
+
+      goTo(index) {
+        this.currentIndex = index;
+        this.updatePosition();
+        this.updateIndicators();
+        this.resetAutoSlide();
+      }
+
+      startAutoSlide() {
+        this.autoSlideTimer = setInterval(() => this.next(), this.interval);
+      }
+
+      pauseAutoSlide() {
+        if (this.autoSlideTimer) {
+          clearInterval(this.autoSlideTimer);
+          this.autoSlideTimer = null;
+        }
+      }
+
+      resumeAutoSlide() {
+        if (this.autoSlide && !this.autoSlideTimer) this.startAutoSlide();
+      }
+
+      resetAutoSlide() {
+        if (this.autoSlide) {
+          this.pauseAutoSlide();
+          this.startAutoSlide();
+        }
+      }
+    }
+
+    // Feedback Data
+    const feedbackData = [
+      { type: "Student", name: "Rohan S", stars: 5, text: "The teaching methodology helped me gain confidence and significantly improve my scores.", avatar: "👨‍🎓" },
+      { type: "Parent", name: "Mrs. Anitha", stars: 5, text: "Very disciplined teaching approach with visible academic progress in my child.", avatar: "👩‍👧‍👦" },
+      { type: "Student", name: "Sneha P", stars: 4, text: "Doubt clearing sessions are extremely helpful. The mentors are patient and explain concepts well.", avatar: "👩‍🎓" },
+      { type: "Parent", name: "Mr. Rajesh", stars: 5, text: "The academy focuses on building strong fundamentals. My son's interest in mathematics has increased.", avatar: "👨‍👩‍👦" },
+      { type: "Student", name: "Arjun M", stars: 5, text: "Weekly tests and detailed analytics help track progress effectively.", avatar: "👨‍🎓" }
+    ];
+
+    // Populate feedback carousel
+    const feedbackTrack = document.getElementById("feedbackTrack");
+    if (feedbackTrack) {
+      feedbackData.forEach(f => {
+        feedbackTrack.innerHTML += `
+          <div class="feedback-card">
+            <div class="feedback-header">
+              <div class="feedback-avatar">${f.avatar}</div>
+              <div class="feedback-meta">
+                <span class="feedback-tag">${f.type}</span>
+                <div class="feedback-stars">${"★".repeat(f.stars)}${"☆".repeat(5 - f.stars)}</div>
+              </div>
+            </div>
+            <p class="feedback-name">${f.name}</p>
+            <p class="feedback-text">"${f.text}"</p>
+          </div>
+        `;
+      });
+    }
+
+    // Initialize Carousels after DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      new PremiumCarousel('galleryCarousel', 320, false, 4000);
+      new PremiumCarousel('feedbackCarousel', 360, false, 5000);
     });
   </script>
 </body>
 </html>
-
