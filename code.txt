@@ -956,8 +956,8 @@ html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,25
             <div class="error-message" id="studentPhoneErr"></div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="studentEmail">Student Email <span class="required">*</span></label>
-            <input type="email" id="studentEmail" class="form-input" placeholder="student@example.com" required>
+            <label class="form-label" for="studentEmail">Student Email </span></label>
+            <input type="email" id="studentEmail" class="form-input" placeholder="student@example.com">
             <div class="error-message" id="studentEmailErr"></div>
           </div>
           <div class="form-group">
@@ -1323,6 +1323,38 @@ html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,25
           if (error) {
             alert('Error submitting registration: ' + error.message);
           } else {
+            // Send to Formspree for email alerts
+            try {
+              const formspreeResponse = await fetch('https://formspree.io/f/xlgrjznq', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                  student_name: studentName,
+                  student_dob: studentDob,
+                  parent_name: parentName,
+                  parent_phone: parentPhone,
+                  student_phone: studentPhone || null,
+                  student_email: studentEmail,
+                  parent_email: parentEmail,
+                  school_name: schoolName,
+                  class_studying: cls,
+                  coaching_type: coaching,
+                  syllabus: syllabusVal,
+                  subjects: subjects,
+                  preferred_slot: slotVal
+                })
+              });
+
+              if (!formspreeResponse.ok) {
+                console.warn('Formspree submission failed:', formspreeResponse.statusText);
+              }
+            } catch (formspreeError) {
+              console.warn('Formspree submission error:', formspreeError);
+            }
+
             alert('Registration submitted successfully! We will contact you soon.');
             form.reset();
             subjectGroup.innerHTML = '<p style="color: var(--muted); font-size: 0.85rem;">Please select a class first</p>';

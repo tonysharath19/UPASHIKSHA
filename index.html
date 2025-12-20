@@ -1243,99 +1243,145 @@ html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,25
       return local.replace(/[^a-z]/g, '');
     }
 
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      clearAllErrors();
-      let valid = true;
+    // Add Formspree endpoint at the top with other constants
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xlgrjznq'; // Replace with your actual endpoint
 
-      const studentName = document.getElementById('studentName').value.trim();
-      const studentDob = document.getElementById('studentDob').value;
-      const parentName = document.getElementById('parentName').value.trim();
-      const parentPhone = document.getElementById('parentPhone').value.trim();
-      const studentPhone = document.getElementById('studentPhone').value.trim();
-      const studentEmail = document.getElementById('studentEmail').value.trim();
-      const parentEmail = document.getElementById('parentEmail').value.trim();
-      const schoolName = document.getElementById('schoolName').value.trim();
-      const cls = classSelect.value;
-      const coaching = coachingSelect.value;
-      const syllabusVal = document.getElementById('syllabus').value;
-      const subjects = Array.from(document.querySelectorAll('input[name="subjects"]:checked')).map(cb => cb.value);
-      const slotVal = document.getElementById('slot').value;
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  clearAllErrors();
+  let valid = true;
 
-      if (!studentName) { showError('studentName', 'Student name is required'); valid = false; }
-      if (!studentDob) { showError('studentDob', 'Date of birth is required'); valid = false; }
-      if (!parentName) { showError('parentName', 'Parent name is required'); valid = false; }
-      if (!parentPhone) { showError('parentPhone', 'Parent phone is required'); valid = false; }
-      else if (!phoneRegex.test(parentPhone)) { showError('parentPhone', 'Invalid phone number'); valid = false; }
-      if (!studentEmail) { showError('studentEmail', 'Student email is required'); valid = false; }
-      else if (!emailRegex.test(studentEmail)) { showError('studentEmail', 'Invalid email format'); valid = false; }
-      if (!parentEmail) { showError('parentEmail', 'Parent email is required'); valid = false; }
-      else if (!emailRegex.test(parentEmail)) { showError('parentEmail', 'Invalid email format'); valid = false; }
-      if (!schoolName) { showError('schoolName', 'School name is required'); valid = false; }
-      if (!cls) { showError('classStudying', 'Please select a grade'); valid = false; }
-      if (!coaching) { showError('coachingType', 'Please select coaching type'); valid = false; }
-      if (!syllabusVal) { showError('syllabus', 'Please select syllabus'); valid = false; }
-      if (subjects.length === 0) { showError('subject', 'Please select at least one subject'); valid = false; }
-      if (!slotVal) { showError('slot', 'Please select a time slot'); valid = false; }
+  const studentName = document.getElementById('studentName').value.trim();
+  const studentDob = document.getElementById('studentDob').value;
+  const parentName = document.getElementById('parentName').value.trim();
+  const parentPhone = document.getElementById('parentPhone').value.trim();
+  const studentPhone = document.getElementById('studentPhone').value.trim();
+  const studentEmail = document.getElementById('studentEmail').value.trim();
+  const parentEmail = document.getElementById('parentEmail').value.trim();
+  const schoolName = document.getElementById('schoolName').value.trim();
+  const cls = classSelect.value;
+  const coaching = coachingSelect.value;
+  const syllabusVal = document.getElementById('syllabus').value;
+  const subjects = Array.from(document.querySelectorAll('input[name="subjects"]:checked')).map(cb => cb.value);
+  const slotVal = document.getElementById('slot').value;
 
-      if (studentEmail && parentEmail && studentEmail.toLowerCase() === parentEmail.toLowerCase()) {
-        showError('parentEmail', 'Please enter parent\'s email correctly');
-        valid = false;
+  // Validation (keep your existing validation code)
+  if (!studentName) { showError('studentName', 'Student name is required'); valid = false; }
+  if (!studentDob) { showError('studentDob', 'Date of birth is required'); valid = false; }
+  if (!parentName) { showError('parentName', 'Parent name is required'); valid = false; }
+  if (!parentPhone) { showError('parentPhone', 'Parent phone is required'); valid = false; }
+  else if (!phoneRegex.test(parentPhone)) { showError('parentPhone', 'Invalid phone number'); valid = false; }
+  if (!studentEmail) { showError('studentEmail', 'Student email is required'); valid = false; }
+  else if (!emailRegex.test(studentEmail)) { showError('studentEmail', 'Invalid email format'); valid = false; }
+  if (!parentEmail) { showError('parentEmail', 'Parent email is required'); valid = false; }
+  else if (!emailRegex.test(parentEmail)) { showError('parentEmail', 'Invalid email format'); valid = false; }
+  if (!schoolName) { showError('schoolName', 'School name is required'); valid = false; }
+  if (!cls) { showError('classStudying', 'Please select a grade'); valid = false; }
+  if (!coaching) { showError('coachingType', 'Please select coaching type'); valid = false; }
+  if (!syllabusVal) { showError('syllabus', 'Please select syllabus'); valid = false; }
+  if (subjects.length === 0) { showError('subject', 'Please select at least one subject'); valid = false; }
+  if (!slotVal) { showError('slot', 'Please select a time slot'); valid = false; }
+
+  if (studentEmail && parentEmail && studentEmail.toLowerCase() === parentEmail.toLowerCase()) {
+    showError('parentEmail', 'Please enter parent\'s email correctly');
+    valid = false;
+  }
+
+  if (studentName && parentEmail) {
+    const nameParts = studentName.toLowerCase().split(/\s+/);
+    const parentEmailLocal = extractNameFromEmail(parentEmail);
+    const nameInParentEmail = nameParts.some(part => part.length > 2 && parentEmailLocal.includes(part));
+    if (nameInParentEmail) {
+      showError('parentEmail', 'Please enter parent\'s email correctly');
+      valid = false;
+    }
+  }
+
+  if (!studentPhoneGroup.classList.contains('hidden') && studentPhone) {
+    if (!phoneRegex.test(studentPhone)) { showError('studentPhone', 'Invalid phone number'); valid = false; }
+    else if (studentPhone.replace(/\D/g, '') === parentPhone.replace(/\D/g, '')) {
+      showError('studentPhone', 'Student and parent phone cannot be the same');
+      valid = false;
+    }
+  }
+
+  if (valid) {
+    // Disable submit button to prevent double submission
+    const submitBtn = document.querySelector('.form-submit');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="form-submit-text">Submitting... ⏳</span>';
+
+    try {
+      // Step 1: Insert into Supabase
+      const { data, error } = await supabaseClient.from('registrations').insert([{
+        student_name: studentName,
+        student_dob: studentDob,
+        parent_name: parentName,
+        parent_phone: parentPhone,
+        student_phone: studentPhone || null,
+        student_email: studentEmail,
+        parent_email: parentEmail,
+        school_name: schoolName,
+        class_studying: cls,
+        coaching_type: coaching,
+        syllabus: syllabusVal,
+        subjects: subjects,
+        preferred_slot: slotVal
+      }]);
+
+      if (error) {
+        throw new Error('Supabase error: ' + error.message);
       }
 
-      if (studentName && parentEmail) {
-        const nameParts = studentName.toLowerCase().split(/\s+/);
-        const parentEmailLocal = extractNameFromEmail(parentEmail);
-        const nameInParentEmail = nameParts.some(part => part.length > 2 && parentEmailLocal.includes(part));
-        if (nameInParentEmail) {
-          showError('parentEmail', 'Please enter parent\'s email correctly');
-          valid = false;
+      // Step 2: Send email notification via Formspree
+      const formData = new FormData();
+      formData.append('Student Name', studentName);
+      formData.append('Student Date of Birth', studentDob);
+      formData.append('Parent Name', parentName);
+      formData.append('Parent Phone', parentPhone);
+      formData.append('Student Phone', studentPhone || 'Not provided');
+      formData.append('Student Email', studentEmail);
+      formData.append('Parent Email', parentEmail);
+      formData.append('School Name', schoolName);
+      formData.append('Class Studying', cls);
+      formData.append('Coaching Type', coaching);
+      formData.append('Syllabus', syllabusVal);
+      formData.append('Subjects', subjects.join(', '));
+      formData.append('Preferred Slot', slotVal);
+      formData.append('_subject', `🎓 New Registration: ${studentName} - Class ${cls}`);
+      formData.append('_replyto', parentEmail);
+
+      const formspreeResponse = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
         }
+      });
+
+      if (!formspreeResponse.ok) {
+        console.warn('Formspree notification failed, but registration was saved');
       }
 
-      if (!studentPhoneGroup.classList.contains('hidden') && studentPhone) {
-        if (!phoneRegex.test(studentPhone)) { showError('studentPhone', 'Invalid phone number'); valid = false; }
-        else if (studentPhone.replace(/\D/g, '') === parentPhone.replace(/\D/g, '')) {
-          showError('studentPhone', 'Student and parent phone cannot be the same');
-          valid = false;
-        }
-      }
+      // Success!
+      alert('✅ Registration submitted successfully! We will contact you soon.');
+      form.reset();
+      subjectGroup.innerHTML = '<p style="color: var(--muted); font-size: 0.85rem;">Please select a class first</p>';
+      studentPhoneGroup.classList.add('hidden');
+      document.querySelectorAll('.form-select').forEach(el => el.classList.remove('filled'));
+      closeModal();
 
-      if (valid) {
-        try {
-          const { data, error } = await supabaseClient.from('registrations').insert([{
-            student_name: studentName,
-            student_dob: studentDob,
-            parent_name: parentName,
-            parent_phone: parentPhone,
-            student_phone: studentPhone || null,
-            student_email: studentEmail,
-            parent_email: parentEmail,
-            school_name: schoolName,
-            class_studying: cls,
-            coaching_type: coaching,
-            syllabus: syllabusVal,
-            subjects: subjects,
-            preferred_slot: slotVal,
-            created_at: new Date().toISOString()
-          }]);
-
-          if (error) {
-            alert('Error submitting registration: ' + error.message);
-          } else {
-            alert('Registration submitted successfully! We will contact you soon.');
-            form.reset();
-            subjectGroup.innerHTML = '<p style="color: var(--muted); font-size: 0.85rem;">Please select a class first</p>';
-            studentPhoneGroup.classList.add('hidden');
-            document.querySelectorAll('.form-select').forEach(el => el.classList.remove('filled'));
-            closeModal();
-          }
-        } catch (err) {
-          alert('An unexpected error occurred. Please try again.');
-          console.error('Supabase error:', err);
-        }
-      }
-    });
+    } catch (err) {
+      console.error('Submission error:', err);
+      alert('❌ An error occurred while submitting. Please try again or contact us directly.');
+    } finally {
+      // Re-enable submit button
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+  }
+});
 
     document.querySelectorAll('.form-input,.form-select').forEach(el => {
       el.addEventListener('input', () => clearError(el.id));
