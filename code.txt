@@ -1207,7 +1207,7 @@ html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,25
     }
 
     classSelect.addEventListener('change', () => { updateSubjects(); updateStudentPhone(); });
-    coachingSelect.addEventListener('change', updateSubjects);
+    coachingSelect.addEventListener('change', () => { updateSubjects(); updateSlots(); });
 
     // Focus/blur effects
     document.querySelectorAll('.form-input, .form-select').forEach(el => {

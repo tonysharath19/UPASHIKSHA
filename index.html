@@ -1206,8 +1206,20 @@ html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,25
       }
     }
 
+    function updateSlotOptions() {
+      const coaching = coachingSelect.value;
+      const slotSelect = document.getElementById('slot');
+      slotSelect.innerHTML = '<option value="">Select Slot</option>';
+      if (coaching === 'home') {
+        slotSelect.innerHTML += '<option value="home">Home Tuition (Flexible)</option>';
+      } else {
+        slotSelect.innerHTML += '<option value="morning">Morning (5:45 AM - 7:15 AM)</option><option value="evening">Evening (5:30 PM - 7:00 PM)</option><option value="home">Home Tuition (Flexible)</option>';
+      }
+    }
+
     classSelect.addEventListener('change', () => { updateSubjects(); updateStudentPhone(); });
     coachingSelect.addEventListener('change', updateSubjects);
+    coachingSelect.addEventListener('change', updateSlotOptions);
 
     // Focus/blur effects
     document.querySelectorAll('.form-input, .form-select').forEach(el => {
