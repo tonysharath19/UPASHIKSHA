@@ -466,16 +466,6 @@ html[data-theme="light"] .brand-logo-container::after{background:rgba(255,255,25
     .gallery-item::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25),transparent 70%);transform:translateX(-100%);animation:shine 4s infinite}
     @keyframes shine{to{transform:translateX(100%)}}
     .gallery-item:hover{transform:scale(1.05);box-shadow:0 30px 80px rgba(0,0,0,.5)}
-    .feedback-card{min-width:360px;background:var(--card-bg);border:1px solid var(--border-subtle);box-shadow:var(--shadow-soft);padding:1.75rem;border-radius:20px;flex-shrink:0;text-align:center}
-    html[data-theme="dark"] .feedback-card{background:rgba(30,41,59,0.9)}
-    html[data-theme="light"] .feedback-card{background:rgba(255,255,255,0.95)}
-    .feedback-header{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1rem}
-    .feedback-avatar{font-size:2.5rem}
-    .feedback-meta{display:flex;flex-direction:column;gap:.25rem;align-items:center}
-    .feedback-tag{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:999px;background:rgba(56,189,248,0.1);color:var(--accent);border:1px solid rgba(56,189,248,0.3)}
-    .feedback-stars{color:var(--accent-4);font-size:1rem}
-    .feedback-name{font-weight:700;color:var(--text);margin-bottom:.5rem}
-    .feedback-text{font-size:.9rem;color:var(--muted);line-height:1.6;font-style:italic;word-break:break-word}
 
     @media(max-width:768px){
       .carousel-track{gap:0}
